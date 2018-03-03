@@ -1,7 +1,7 @@
 Racks App
 =====
 
-#Ejemplo de desarollo de app, como prueba para desarrollador freelancer.
+#Ejemplo de desarollo de app.
 
 ##Explicación de la estructura del proyecto
 
