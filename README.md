@@ -14,7 +14,6 @@ Carpetas en latte/
     la vista principal es MainView que es el ViewController de la App.
     
  4. app\view: Es donde está maquetada la interfaz de usuario.  
- 5. A grades rangos es código fuente de la aplicación.
 
 Nota: Se usa TypeScript como lenguaje principal para escribir las clases js.
 
