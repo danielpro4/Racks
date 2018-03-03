@@ -58,4 +58,5 @@ e.g. c:\Projects
 
 6. Reiniciar el servidor Apache
 
-7. Ejecutar en el navegador escribir en la barra de direcciones http://racks.local y listo
+7. Ejecutar en el navegador,
+    - Escribir en la barra de direcciones http://racks.local y listo a funcionar ^_^
