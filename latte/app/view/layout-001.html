@@ -1,0 +1,85 @@
+<div class="main-view" data-class="MainViewBase">
+    <div class="container">
+        <div class="wrapper" data-property="wrapperElement"></div>
+    </div>
+</div> <!-- ./ MainViewBase -->
+
+<div class="register-element" data-class="RegisterFormBase">
+    <header class="py-5 text-center">
+        <div class="clearfix">
+            <button class="btn btn-primary float-left" data-property="btnBack">Regresar</button>
+            <h5>Crear Rack</h5>
+        </div>
+        <hr/>
+    </header>
+    <main>
+        <form class="register-form">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="iptLevel">Niveles</label>
+                    <input type="text" class="form-control" id="iptLevel" data-property="txtLevel"
+                           placeholder="Número de niveles" value="4" required="">
+                    <div class="invalid-feedback" data-property="txtLevelFeedback">
+                        La cantidad de niveles son requeridos.
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="iptLocation">Ubicaciones</label>
+                    <input type="text" class="form-control" id="iptLocation" data-property="txtLocation"
+                           placeholder="Número de ubicaciones" value="15" required="">
+                    <div class="invalid-feedback" data-property="txtLocationFeedback">
+                        La cantidad de ubicaciones son requeridas
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3"></div>
+                <div class="col-md-3 mb-3">
+                    <button class="btn btn-secondary btn-block" data-property="btnReset">Descartar cambios</button>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <button class="btn btn-primary btn-block" data-property="btnRegister">Generar rack</button>
+                </div>
+            </div>
+        </form> <!-- ./ RegisterFormBase -->
+    </main>
+</div>
+
+<div class="rack-element" data-class="RackElementBase">
+    <header class="py-5 text-center">
+        <div class="clearfix">
+            <button class="btn btn-primary float-left" data-property="btnBack">Regresar</button>
+            <h5>Administrar Rack: <span data-property="lblName"></span></h5>
+        </div>
+        <hr/>
+    </header>
+    <main class="main">
+        <table class="table table-bordered">
+            <thead data-property="tableHead"></thead>
+            <tbody data-property="tableBody"></tbody>
+        </table>
+    </main>
+</div> <!-- ./ RackElementBase -->
+
+<div class="product-element" data-class="ProductElementBase">
+    <div class="img" data-property="image">
+        <img src="/design/imgs/product.jpg" alt="Producto" class="img-fluid"/>
+    </div>
+    <div class="quantity" data-property="quantityElement">80</div>
+</div> <!-- ./ ProductElementBase -->
+
+<div class="location-element" data-class="LocationEditElementBase">
+    <form class="register-form" data-property="form" autocomplete="off">
+        <div class="row">
+            <div class="col-md-12 mb-3">
+                <label for="iptQuantity">Niveles</label>
+                <input type="text" class="form-control" id="iptQuantity" data-property="txtQuantity"
+                       placeholder="Número de niveles" value="0" required="" autofocus>
+                <div class="invalid-feedback">
+                    Niveles son requeridos.
+                </div>
+            </div>
+        </div>
+    </form>
+</div> <!-- ./ LocationEditElementBase -->

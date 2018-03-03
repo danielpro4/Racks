@@ -1,0 +1,17 @@
+{
+  "connection": {
+    "file": "../../connection.json"
+  },
+
+  "module-include":[
+    "latte.element",
+    "latte.data",
+    "latte"
+  ],
+  "records": [
+    "product",
+    "level",
+    "location",
+    "rack"
+  ]
+}

@@ -1,0 +1,35 @@
+<div class="main-view" data-class="RacksViewBase">
+    <div class="container">
+        <header class="py-5 mb-3">
+            <div class="clearfix">
+                <h5>Administración de Racks</h5>
+                <p class="text-sm-left">Módulo para Consultar, crear, actualizar y eliminar racks del sistema</p>
+                <button class="btn btn-primary btn-sm float-right" data-property="btnCreateNew">Crear nuevo Rack</button>
+            </div>
+            <hr/>
+        </header>
+
+        <main class="main">
+            <table class="table table-bordered">
+                <thead>
+                <tr class="">
+                    <th>Nombre</th>
+                    <th width="160">Opciones</th>
+                </tr>
+                </thead>
+                <tbody data-property="bodyElement">
+                    <tr>
+                        <td colspan="2">
+                            <p class="m-3 text-center">No hay elementos que mostrar</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+
+        <footer class="clearfix">
+            <div class="float-left" data-property="rowsElement">2</div>
+            <a class="float-right" href="javascript:void(0)" data-property="btnRefresh">Actualizar</a>
+        </footer>
+    </div>
+</div> <!-- ./ MainViewBase --

@@ -1,0 +1,16 @@
+.rack-element { }
+
+.rack-element .table tr td:first-child {
+    vertical-align: middle !important;
+    text-align: center;
+}
+
+.rack-element .table th {
+    background: rgba(85, 96, 113, 0.91);
+    color: white;
+    text-align: center;
+}
+
+.rack-element .table td.location {
+    background: #f6f6f6;
+}
