@@ -1121,6 +1121,97 @@ var latte;
     /**
      *
      */
+    var CollectionEvent = /** @class */ (function () {
+        //region Static
+        //endregion
+        //region Fields
+        //endregion
+        /**
+         * Initializes the event
+         */
+        function CollectionEvent(item, itemIndex, cancellable) {
+            if (itemIndex === void 0) { itemIndex = -1; }
+            if (cancellable === void 0) { cancellable = false; }
+            //region Private Methods
+            //endregion
+            //region Methods
+            //endregion
+            //region Events
+            //endregion
+            //region Properties
+            /**
+             * Property field
+             */
+            this._cancel = null;
+            this._item = item;
+            this._cancellable = cancellable;
+            this._itemIndex = itemIndex;
+        }
+        Object.defineProperty(CollectionEvent.prototype, "cancel", {
+            /**
+             * Gets or sets a value indicating if the event can be cancelled
+             *
+             * @returns {boolean}
+             */
+            get: function () {
+                return this._cancel;
+            },
+            /**
+             * Gets or sets a value indicating if the event can be cancelled
+             *
+             * @param {boolean} value
+             */
+            set: function (value) {
+                this._cancel = value;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(CollectionEvent.prototype, "cancellable", {
+            /**
+             * Gets a value indicating if the event is cancellable
+             *
+             * @returns {boolean}
+             */
+            get: function () {
+                return this._cancellable;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(CollectionEvent.prototype, "item", {
+            /**
+             * Gets the item of the event
+             *
+             * @returns {any}
+             */
+            get: function () {
+                return this._item;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(CollectionEvent.prototype, "itemIndex", {
+            /**
+             * Gets the index of the item concerning the event
+             *
+             * @returns {number}
+             */
+            get: function () {
+                return this._itemIndex;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        return CollectionEvent;
+    }());
+    latte.CollectionEvent = CollectionEvent;
+})(latte || (latte = {}));
+var latte;
+(function (latte) {
+    /**
+     *
+     */
     var Collection = /** @class */ (function () {
         //endregion
         /**
@@ -1515,97 +1606,6 @@ var latte;
         return Collection;
     }());
     latte.Collection = Collection;
-})(latte || (latte = {}));
-var latte;
-(function (latte) {
-    /**
-     *
-     */
-    var CollectionEvent = /** @class */ (function () {
-        //region Static
-        //endregion
-        //region Fields
-        //endregion
-        /**
-         * Initializes the event
-         */
-        function CollectionEvent(item, itemIndex, cancellable) {
-            if (itemIndex === void 0) { itemIndex = -1; }
-            if (cancellable === void 0) { cancellable = false; }
-            //region Private Methods
-            //endregion
-            //region Methods
-            //endregion
-            //region Events
-            //endregion
-            //region Properties
-            /**
-             * Property field
-             */
-            this._cancel = null;
-            this._item = item;
-            this._cancellable = cancellable;
-            this._itemIndex = itemIndex;
-        }
-        Object.defineProperty(CollectionEvent.prototype, "cancel", {
-            /**
-             * Gets or sets a value indicating if the event can be cancelled
-             *
-             * @returns {boolean}
-             */
-            get: function () {
-                return this._cancel;
-            },
-            /**
-             * Gets or sets a value indicating if the event can be cancelled
-             *
-             * @param {boolean} value
-             */
-            set: function (value) {
-                this._cancel = value;
-            },
-            enumerable: true,
-            configurable: true
-        });
-        Object.defineProperty(CollectionEvent.prototype, "cancellable", {
-            /**
-             * Gets a value indicating if the event is cancellable
-             *
-             * @returns {boolean}
-             */
-            get: function () {
-                return this._cancellable;
-            },
-            enumerable: true,
-            configurable: true
-        });
-        Object.defineProperty(CollectionEvent.prototype, "item", {
-            /**
-             * Gets the item of the event
-             *
-             * @returns {any}
-             */
-            get: function () {
-                return this._item;
-            },
-            enumerable: true,
-            configurable: true
-        });
-        Object.defineProperty(CollectionEvent.prototype, "itemIndex", {
-            /**
-             * Gets the index of the item concerning the event
-             *
-             * @returns {number}
-             */
-            get: function () {
-                return this._itemIndex;
-            },
-            enumerable: true,
-            configurable: true
-        });
-        return CollectionEvent;
-    }());
-    latte.CollectionEvent = CollectionEvent;
 })(latte || (latte = {}));
 var latte;
 (function (latte) {
@@ -4789,8 +4789,8 @@ var latte;
 /// <reference path="/Users/daniel/Projects/Racks/latte/latte/ts/BindValueType.ts" />
 /// <reference path="/Users/daniel/Projects/Racks/latte/latte/ts/ICall.ts" />
 /// <reference path="/Users/daniel/Projects/Racks/latte/latte/ts/ICountry.ts" />
-/// <reference path="/Users/daniel/Projects/Racks/latte/latte/ts/IDataRemoteCall.ts" />
 /// <reference path="/Users/daniel/Projects/Racks/latte/latte/ts/IEntityMeta.ts" />
+/// <reference path="/Users/daniel/Projects/Racks/latte/latte/ts/IDataRemoteCall.ts" />
 /// <reference path="/Users/daniel/Projects/Racks/latte/latte/ts/IInput.ts" />
 /// <reference path="/Users/daniel/Projects/Racks/latte/latte/ts/IMessage.ts" />
 /// <reference path="/Users/daniel/Projects/Racks/latte/latte/ts/IRemoteResponse.ts" />
@@ -4803,8 +4803,8 @@ var latte;
 /// <reference path="/Users/daniel/Projects/Racks/latte/latte/ts/Ex.ts" />
 /// <reference path="/Users/daniel/Projects/Racks/latte/latte/ts/Ajax.ts" />
 /// <reference path="/Users/daniel/Projects/Racks/latte/latte/ts/CancellableCallbackEvent.ts" />
-/// <reference path="/Users/daniel/Projects/Racks/latte/latte/ts/Collection.ts" />
 /// <reference path="/Users/daniel/Projects/Racks/latte/latte/ts/CollectionEvent.ts" />
+/// <reference path="/Users/daniel/Projects/Racks/latte/latte/ts/Collection.ts" />
 /// <reference path="/Users/daniel/Projects/Racks/latte/latte/ts/Color.ts" />
 /// <reference path="/Users/daniel/Projects/Racks/latte/latte/ts/Country.ts" />
 /// <reference path="/Users/daniel/Projects/Racks/latte/latte/ts/Culture.ts" />

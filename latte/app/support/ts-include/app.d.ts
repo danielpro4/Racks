@@ -215,6 +215,95 @@ declare module latte {
             "created": string;
         };
     }
+    class levelBase extends DataRecord {
+        _recordType: string;
+        _moduleName: string;
+        /**
+         * Database field: int(10) unsigned
+         */
+        _idlevel: number;
+        /**
+         * Gets or sets the value of the idlevel field of type int(10) unsigned
+         */
+        /**
+         * Gets or sets the value of the idlevel field of type int(10) unsigned
+         */
+        idlevel: number;
+        /**
+         * Back field for event
+         */
+        _idlevelChanged: LatteEvent;
+        /**
+         * Gets an event raised when the value of the idlevel property changes
+         */
+        readonly idlevelChanged: LatteEvent;
+        /**
+         * Raises the <c>idlevelChanged</c> event
+         */
+        onIdlevelChanged(): void;
+        /**
+        * Gets the name of the autoincrement field
+        **/
+        onGetRecordIdName(): string;
+        /**
+         * Database field: int(10) unsigned
+         */
+        _idrack: number;
+        /**
+         * Gets or sets the value of the idrack field of type int(10) unsigned
+         */
+        /**
+         * Gets or sets the value of the idrack field of type int(10) unsigned
+         */
+        idrack: number;
+        /**
+         * Back field for event
+         */
+        _idrackChanged: LatteEvent;
+        /**
+         * Gets an event raised when the value of the idrack property changes
+         */
+        readonly idrackChanged: LatteEvent;
+        /**
+         * Raises the <c>idrackChanged</c> event
+         */
+        onIdrackChanged(): void;
+        /**
+         * Database field: timestamp
+         */
+        _created: TimeSpan;
+        /**
+         * Gets or sets the value of the created field of type timestamp
+         */
+        /**
+         * Gets or sets the value of the created field of type timestamp
+         */
+        created: TimeSpan;
+        /**
+         * Back field for event
+         */
+        _createdChanged: LatteEvent;
+        /**
+         * Gets an event raised when the value of the created property changes
+         */
+        readonly createdChanged: LatteEvent;
+        /**
+         * Raises the <c>createdChanged</c> event
+         */
+        onCreatedChanged(): void;
+        /**
+        * Override. Gets data about the fields of the record.
+        **/
+        onGetFields(): any;
+        /**
+        * Declares the native types of the record.
+        **/
+        static nativeTypes: {
+            "idlevel": string;
+            "idrack": string;
+            "created": string;
+        };
+    }
     class locationBase extends DataRecord {
         _recordType: string;
         _moduleName: string;
@@ -349,95 +438,6 @@ declare module latte {
             "idlevel": string;
             "idproduct": string;
             "quantity": string;
-            "created": string;
-        };
-    }
-    class levelBase extends DataRecord {
-        _recordType: string;
-        _moduleName: string;
-        /**
-         * Database field: int(10) unsigned
-         */
-        _idlevel: number;
-        /**
-         * Gets or sets the value of the idlevel field of type int(10) unsigned
-         */
-        /**
-         * Gets or sets the value of the idlevel field of type int(10) unsigned
-         */
-        idlevel: number;
-        /**
-         * Back field for event
-         */
-        _idlevelChanged: LatteEvent;
-        /**
-         * Gets an event raised when the value of the idlevel property changes
-         */
-        readonly idlevelChanged: LatteEvent;
-        /**
-         * Raises the <c>idlevelChanged</c> event
-         */
-        onIdlevelChanged(): void;
-        /**
-        * Gets the name of the autoincrement field
-        **/
-        onGetRecordIdName(): string;
-        /**
-         * Database field: int(10) unsigned
-         */
-        _idrack: number;
-        /**
-         * Gets or sets the value of the idrack field of type int(10) unsigned
-         */
-        /**
-         * Gets or sets the value of the idrack field of type int(10) unsigned
-         */
-        idrack: number;
-        /**
-         * Back field for event
-         */
-        _idrackChanged: LatteEvent;
-        /**
-         * Gets an event raised when the value of the idrack property changes
-         */
-        readonly idrackChanged: LatteEvent;
-        /**
-         * Raises the <c>idrackChanged</c> event
-         */
-        onIdrackChanged(): void;
-        /**
-         * Database field: timestamp
-         */
-        _created: TimeSpan;
-        /**
-         * Gets or sets the value of the created field of type timestamp
-         */
-        /**
-         * Gets or sets the value of the created field of type timestamp
-         */
-        created: TimeSpan;
-        /**
-         * Back field for event
-         */
-        _createdChanged: LatteEvent;
-        /**
-         * Gets an event raised when the value of the created property changes
-         */
-        readonly createdChanged: LatteEvent;
-        /**
-         * Raises the <c>createdChanged</c> event
-         */
-        onCreatedChanged(): void;
-        /**
-        * Override. Gets data about the fields of the record.
-        **/
-        onGetFields(): any;
-        /**
-        * Declares the native types of the record.
-        **/
-        static nativeTypes: {
-            "idlevel": string;
-            "idrack": string;
             "created": string;
         };
     }
@@ -646,71 +646,6 @@ declare module latte {
 }
 declare module latte {
     /**
-     * Main Class
-     * Your app starts here.
-     */
-    class Main {
-        /**
-         * Pointer to the current main view
-         */
-        static mainView: MainView;
-        /**
-         * Start your program on the constructor.
-         */
-        constructor();
-        private goMainView();
-    }
-}
-declare module latte {
-    /**
-     * MainView
-     */
-    class MainView extends MainViewBase {
-        /**
-         * Creates a new DashboardView
-         */
-        constructor();
-        /**
-         * Establece la vista principal de la aplicación.
-         *
-         * @param {latte.Element<HTMLElement>} el
-         */
-        present(el: Element<HTMLElement>): void;
-        /**
-         * Field for registerForm property
-         */
-        private _registerForm;
-        /**
-         * Gets the register form instance
-         *
-         * @returns {RegisterForm}
-         */
-        readonly registerForm: RegisterForm;
-        /**
-         * Field for racksView property
-         */
-        private _racksView;
-        /**
-         * Gets el componente para mostrar los racks de la vista principal
-         *
-         * @returns {RacksView}
-         */
-        readonly racksView: RacksView;
-    }
-}
-declare module latte {
-    /**
-     * LoaderElement
-     */
-    class LoaderElement extends LoaderElementBase {
-        /**
-         * LoaderElement
-         */
-        constructor();
-    }
-}
-declare module latte {
-    /**
      * DialogElement
      */
     class DialogElement extends DialogElementBase {
@@ -807,6 +742,23 @@ declare module latte {
 }
 declare module latte {
     /**
+     * Main Class
+     * Your app starts here.
+     */
+    class Main {
+        /**
+         * Pointer to the current main view
+         */
+        static mainView: MainView;
+        /**
+         * Start your program on the constructor.
+         */
+        constructor();
+        private goMainView();
+    }
+}
+declare module latte {
+    /**
      * LocationEditElement
      */
     class LocationEditElement extends LocationEditElementBase {
@@ -839,60 +791,6 @@ declare module latte {
          */
         /**
          * Gets or sets when the location property chamnges
-         *
-         * @param {Location} value
-         */
-        location: Location;
-    }
-}
-declare module latte {
-    /**
-     * ProductElement
-     */
-    class ProductElement extends ProductElementBase {
-        /**
-         * Creates a new ProductElement
-         */
-        constructor();
-        /**
-         * Raises the <c>location</c> event
-         */
-        onProductChanged(): void;
-        /**
-         * Raises the <c>click</c> event
-         */
-        onClick(): void;
-        /**
-         * Back field for event
-         */
-        private _locationChanged;
-        /**
-         * Gets an event raised when the value of the location property changes
-         *
-         * @returns {LatteEvent}
-         */
-        readonly locationChanged: LatteEvent;
-        /**
-         * Back field for event
-         */
-        private _click;
-        /**
-         * Gets an event raised when when the user raises the click
-         *
-         * @returns {LatteEvent}
-         */
-        readonly click: LatteEvent;
-        /**
-         * Property field
-         */
-        private _location;
-        /**
-         * Gets or sets when the location property changes
-         *
-         * @returns {Location}
-         */
-        /**
-         * Gets or sets when the location property changes
          *
          * @param {Location} value
          */
@@ -965,6 +863,60 @@ declare module latte {
 }
 declare module latte {
     /**
+     * ProductElement
+     */
+    class ProductElement extends ProductElementBase {
+        /**
+         * Creates a new ProductElement
+         */
+        constructor();
+        /**
+         * Raises the <c>location</c> event
+         */
+        onProductChanged(): void;
+        /**
+         * Raises the <c>click</c> event
+         */
+        onClick(): void;
+        /**
+         * Back field for event
+         */
+        private _locationChanged;
+        /**
+         * Gets an event raised when the value of the location property changes
+         *
+         * @returns {LatteEvent}
+         */
+        readonly locationChanged: LatteEvent;
+        /**
+         * Back field for event
+         */
+        private _click;
+        /**
+         * Gets an event raised when when the user raises the click
+         *
+         * @returns {LatteEvent}
+         */
+        readonly click: LatteEvent;
+        /**
+         * Property field
+         */
+        private _location;
+        /**
+         * Gets or sets when the location property changes
+         *
+         * @returns {Location}
+         */
+        /**
+         * Gets or sets when the location property changes
+         *
+         * @param {Location} value
+         */
+        location: Location;
+    }
+}
+declare module latte {
+    /**
      * RegisterForm
      */
     class RegisterForm extends RegisterFormBase {
@@ -1012,6 +964,31 @@ declare module latte {
          * @returns {LatteEvent}
          */
         readonly registered: LatteEvent;
+    }
+}
+declare module latte {
+    /**
+     * LoaderElement
+     */
+    class LoaderElement extends LoaderElementBase {
+        /**
+         * LoaderElement
+         */
+        constructor();
+    }
+}
+/**
+ * Generated by xlatte
+ */
+declare module latte {
+    /**
+     * Record for table level
+     */
+    class Level extends levelBase {
+        /**
+         * Array de ubicaciones por nivel
+         */
+        locations: Location[];
     }
 }
 declare module latte {
@@ -1094,18 +1071,41 @@ declare module latte {
         readonly loader: LoaderElement;
     }
 }
-/**
- * Generated by xlatte
- */
 declare module latte {
     /**
-     * Record for table level
+     * MainView
      */
-    class Level extends levelBase {
+    class MainView extends MainViewBase {
         /**
-         * Array de ubicaciones por nivel
+         * Creates a new DashboardView
          */
-        locations: Location[];
+        constructor();
+        /**
+         * Establece la vista principal de la aplicación.
+         *
+         * @param {latte.Element<HTMLElement>} el
+         */
+        present(el: Element<HTMLElement>): void;
+        /**
+         * Field for registerForm property
+         */
+        private _registerForm;
+        /**
+         * Gets the register form instance
+         *
+         * @returns {RegisterForm}
+         */
+        readonly registerForm: RegisterForm;
+        /**
+         * Field for racksView property
+         */
+        private _racksView;
+        /**
+         * Gets el componente para mostrar los racks de la vista principal
+         *
+         * @returns {RacksView}
+         */
+        readonly racksView: RacksView;
     }
 }
 /**
@@ -1113,9 +1113,13 @@ declare module latte {
  */
 declare module latte {
     /**
-     * Record for table location
+     * Record for table rack
      */
-    class Location extends locationBase {
+    class Rack extends rackBase {
+        /**
+         * Array de niveles
+         */
+        levels: Level[];
     }
 }
 /**
@@ -1133,12 +1137,8 @@ declare module latte {
  */
 declare module latte {
     /**
-     * Record for table rack
+     * Record for table location
      */
-    class Rack extends rackBase {
-        /**
-         * Array de niveles
-         */
-        levels: Level[];
+    class Location extends locationBase {
     }
 }

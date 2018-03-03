@@ -95,6 +95,233 @@ var latte;
 var latte;
 (function (latte) {
     /**
+     * Represents a set of structured data
+     **/
+    var DataSet = /** @class */ (function () {
+        /**
+         * Creates the dataset
+         **/
+        function DataSet() {
+            this.columns = new latte.Collection();
+            this.rows = new latte.Collection();
+        }
+        /**
+         * Creates a <c>DataSet</c> from the dataset specified as a JSON object
+         **/
+        DataSet.fromServerObject = function (dataset) {
+            var d = new DataSet();
+            var i;
+            for (i in dataset.fields) {
+                d.columns.add(new latte.DataSetColumn(dataset.fields[i].name, DataSet.fromServerType(dataset.fields[i].type), dataset.fields[i].length));
+            }
+            // Add rows
+            if (latte._isArray(dataset.rows)) {
+                for (i = 0; i < dataset.rows.length; i++) {
+                    var arr = dataset.rows[i];
+                    var ds = new latte.DataSetRow(arr);
+                    d.rows.add(ds);
+                }
+            }
+            return d;
+        };
+        /**
+         * Converts the type sent by server to a type compatible with <c>InputItem</c>
+         **/
+        DataSet.fromServerType = function (type) {
+            switch (type) {
+                case 'int':
+                    type = 'integer';
+                    break;
+                case 'blob':
+                    type = 'string';
+                    break;
+            }
+            return type;
+        };
+        /**
+         * Gets the index of the column by passing the name of the column
+         **/
+        DataSet.prototype.getColumnIndex = function (columnName) {
+            var col = null;
+            var i = 0;
+            while ((col = this.columns.next())) {
+                if (col.name.toLowerCase() == columnName.toLowerCase()) {
+                    this.columns.resetPointer();
+                    return i;
+                }
+                i++;
+            }
+            return null;
+        };
+        /**
+         * Gets the data as an array of arrays
+         **/
+        DataSet.prototype.getDataArray = function () {
+            var a = [];
+            for (var i = 0; i < this.rows.count; i++)
+                a.push(this.rows.item(i).getDataArray(this.columns.count));
+            return a;
+        };
+        /**
+         * Gets the value of the specified column at the specified row index
+         **/
+        DataSet.prototype.getValue = function (columnName, rowIndex) {
+            var columnIndex;
+            if ((columnIndex = this.getColumnIndex(columnName))) {
+                return this.getValueAt(columnIndex, rowIndex);
+            }
+            else {
+                throw new latte.InvalidArgumentEx(columnName);
+            }
+        };
+        /**
+         * Gets the value at the specified position
+         **/
+        DataSet.prototype.getValueAt = function (columnIndex, rowIndex) {
+            if (this.rows.count > rowIndex && this.rows.item(rowIndex).hasValueAt(columnIndex))
+                return this.rows.item(rowIndex).getValueAt(columnIndex);
+            else
+                return null;
+        };
+        /**
+         * Sets the value at the specified position
+         **/
+        DataSet.prototype.setValue = function (columnName, rowIndex, value) {
+            var columnIndex;
+            if ((columnIndex = this.getColumnIndex(columnName))) {
+                return this.setValueAt(columnIndex, rowIndex, value);
+            }
+            return this;
+        };
+        /**
+         * Sets the value at the specified position
+         **/
+        DataSet.prototype.setValueAt = function (columnIndex, rowIndex, value) {
+            if (this.rows.count > rowIndex && this.rows.item(rowIndex).hasValueAt(columnIndex))
+                this.rows.item(rowIndex).setValueAt(columnIndex, value);
+            else if (this.rows.count <= rowIndex)
+                throw new latte.InvalidArgumentEx('rowIndex', rowIndex);
+            else
+                throw new latte.InvalidArgumentEx('columnIndex', columnIndex);
+            return this;
+        };
+        return DataSet;
+    }());
+    latte.DataSet = DataSet;
+})(latte || (latte = {}));
+var latte;
+(function (latte) {
+    /**
+     * Represents a column of data for <c>DataSet</c>
+     **/
+    var DataSetColumn = /** @class */ (function () {
+        /**
+         * Creates the column.
+         Optionally specifies its name, type and length.
+         **/
+        function DataSetColumn(name, type, length) {
+            if (name === void 0) { name = ''; }
+            if (type === void 0) { type = ''; }
+            if (length === void 0) { length = 0; }
+            this.optionsChanged = new latte.LatteEvent(this);
+            this.name = name;
+            this.type = type;
+            this.length = length;
+        }
+        Object.defineProperty(DataSetColumn.prototype, "length", {
+            /**
+             * Gets or sets the length of the column values.
+             **/
+            get: function () {
+                return this._length;
+            },
+            /**
+             * Gets or sets the length of the column values.
+             **/
+            set: function (value) {
+                this._length = value;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(DataSetColumn.prototype, "name", {
+            /**
+             * Gets or sets the name of the column.
+             **/
+            get: function () {
+                return this._name;
+            },
+            /**
+             * Gets or sets the name of the column.
+             **/
+            set: function (value) {
+                this._name = value;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        /**
+         * Raises the <c>optionsChanged</c> event.
+         **/
+        DataSetColumn.prototype.onOptionsChanged = function () {
+            this.optionsChanged.raise();
+        };
+        Object.defineProperty(DataSetColumn.prototype, "options", {
+            /**
+             * Gets or sets the options of the column.
+             **/
+            get: function () {
+                return this._options;
+            },
+            /**
+             * Gets or sets the options of the column.
+             **/
+            set: function (value /*(any|Array)*/) {
+                this._options = value;
+                this.onOptionsChanged();
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(DataSetColumn.prototype, "tag", {
+            /**
+             * Gets or sets a generic tag value for the object
+             **/
+            get: function () {
+                return this._tag;
+            },
+            /**
+             * Gets or sets a generic tag value for the object
+             **/
+            set: function (value) {
+                this._tag = value;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(DataSetColumn.prototype, "type", {
+            /**
+             * Gets or sets the type of the column values.
+             **/
+            get: function () {
+                return this._type;
+            },
+            /**
+             * Gets or sets the type of the column values.
+             **/
+            set: function (value) {
+                this._type = value;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        return DataSetColumn;
+    }());
+    latte.DataSetColumn = DataSetColumn;
+})(latte || (latte = {}));
+var latte;
+(function (latte) {
+    /**
      * Initialize, then call value property to obtain coerced value
      */
     var DataBindCoercion = /** @class */ (function () {
@@ -185,6 +412,89 @@ var latte;
         return DataBindCoercion;
     }());
     latte.DataBindCoercion = DataBindCoercion;
+})(latte || (latte = {}));
+var latte;
+(function (latte) {
+    /**
+     * Represents a row of data for <c>DataSet</c>
+     **/
+    var DataSetRow = /** @class */ (function () {
+        /**
+         * Creates the row of data. Optionally sets the array of data
+         **/
+        function DataSetRow(data) {
+            if (data === void 0) { data = []; }
+            this.data = data;
+            if (data)
+                this.data = data;
+            else
+                this.data = [];
+        }
+        /**
+         * Gets the data as an array of specified positions. Undefined positions will be set to null
+         **/
+        DataSetRow.prototype.getDataArray = function (columns) {
+            var a = [];
+            for (var i = 0; i < columns; i++)
+                if (latte._undef(this.data[i]))
+                    a[i] = null;
+                else
+                    a[i] = this.data[i];
+            return a;
+        };
+        /**
+         * Gets a value indicating if there is a value at the specified index
+         **/
+        DataSetRow.prototype.hasValueAt = function (index) {
+            return !latte._undef(this.data[index]);
+        };
+        Object.defineProperty(DataSetRow.prototype, "readOnly", {
+            /**
+             * Gets or sets a value indicating if the row is read-only
+             **/
+            get: function () {
+                return this._readOnly;
+            },
+            /**
+             * Gets or sets a value indicating if the row is read-only
+             **/
+            set: function (value) {
+                this._readOnly = value;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(DataSetRow.prototype, "tag", {
+            /**
+             * Gets or sets the value at the specified position
+             **/
+            get: function () {
+                return this._tag;
+            },
+            /**
+             * Gets or sets the value at the specified position
+             **/
+            set: function (value) {
+                this._tag = value;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        /**
+         * Gets or sets the value at the specified position
+         **/
+        DataSetRow.prototype.getValueAt = function (index) {
+            return this.data[index];
+        };
+        /**
+         * Gets or sets the value at the specified position
+         **/
+        DataSetRow.prototype.setValueAt = function (index, value) {
+            this.data[index] = value;
+        };
+        return DataSetRow;
+    }());
+    latte.DataSetRow = DataSetRow;
 })(latte || (latte = {}));
 var latte;
 (function (latte) {
@@ -844,351 +1154,6 @@ var latte;
         return DataRecord;
     }());
     latte.DataRecord = DataRecord;
-})(latte || (latte = {}));
-var latte;
-(function (latte) {
-    /**
-     * Represents a collection of records
-     */
-    var DataRecordCollection = /** @class */ (function (_super) {
-        __extends(DataRecordCollection, _super);
-        /**
-         * Creates the collection of the specified type.
-         * Optionally specifies handlers for adding and removing items, and a
-         * context to call as closure of events.
-         *
-         * @param addCallback
-         * @param removeCallback
-         * @param context
-         */
-        function DataRecordCollection(addCallback, removeCallback, context) {
-            if (addCallback === void 0) { addCallback = null; }
-            if (removeCallback === void 0) { removeCallback = null; }
-            if (context === void 0) { context = null; }
-            return _super.call(this, addCallback, removeCallback, context) || this;
-        }
-        /**
-         * Finds the record of the specified <c>id</c>
-         *
-         * @param id
-         * @returns {null}
-         */
-        DataRecordCollection.prototype.byId = function (id) {
-            return null;
-        };
-        return DataRecordCollection;
-    }(latte.Collection));
-    latte.DataRecordCollection = DataRecordCollection;
-})(latte || (latte = {}));
-var latte;
-(function (latte) {
-    /**
-     * Represents a set of structured data
-     **/
-    var DataSet = /** @class */ (function () {
-        /**
-         * Creates the dataset
-         **/
-        function DataSet() {
-            this.columns = new latte.Collection();
-            this.rows = new latte.Collection();
-        }
-        /**
-         * Creates a <c>DataSet</c> from the dataset specified as a JSON object
-         **/
-        DataSet.fromServerObject = function (dataset) {
-            var d = new DataSet();
-            var i;
-            for (i in dataset.fields) {
-                d.columns.add(new latte.DataSetColumn(dataset.fields[i].name, DataSet.fromServerType(dataset.fields[i].type), dataset.fields[i].length));
-            }
-            // Add rows
-            if (latte._isArray(dataset.rows)) {
-                for (i = 0; i < dataset.rows.length; i++) {
-                    var arr = dataset.rows[i];
-                    var ds = new latte.DataSetRow(arr);
-                    d.rows.add(ds);
-                }
-            }
-            return d;
-        };
-        /**
-         * Converts the type sent by server to a type compatible with <c>InputItem</c>
-         **/
-        DataSet.fromServerType = function (type) {
-            switch (type) {
-                case 'int':
-                    type = 'integer';
-                    break;
-                case 'blob':
-                    type = 'string';
-                    break;
-            }
-            return type;
-        };
-        /**
-         * Gets the index of the column by passing the name of the column
-         **/
-        DataSet.prototype.getColumnIndex = function (columnName) {
-            var col = null;
-            var i = 0;
-            while ((col = this.columns.next())) {
-                if (col.name.toLowerCase() == columnName.toLowerCase()) {
-                    this.columns.resetPointer();
-                    return i;
-                }
-                i++;
-            }
-            return null;
-        };
-        /**
-         * Gets the data as an array of arrays
-         **/
-        DataSet.prototype.getDataArray = function () {
-            var a = [];
-            for (var i = 0; i < this.rows.count; i++)
-                a.push(this.rows.item(i).getDataArray(this.columns.count));
-            return a;
-        };
-        /**
-         * Gets the value of the specified column at the specified row index
-         **/
-        DataSet.prototype.getValue = function (columnName, rowIndex) {
-            var columnIndex;
-            if ((columnIndex = this.getColumnIndex(columnName))) {
-                return this.getValueAt(columnIndex, rowIndex);
-            }
-            else {
-                throw new latte.InvalidArgumentEx(columnName);
-            }
-        };
-        /**
-         * Gets the value at the specified position
-         **/
-        DataSet.prototype.getValueAt = function (columnIndex, rowIndex) {
-            if (this.rows.count > rowIndex && this.rows.item(rowIndex).hasValueAt(columnIndex))
-                return this.rows.item(rowIndex).getValueAt(columnIndex);
-            else
-                return null;
-        };
-        /**
-         * Sets the value at the specified position
-         **/
-        DataSet.prototype.setValue = function (columnName, rowIndex, value) {
-            var columnIndex;
-            if ((columnIndex = this.getColumnIndex(columnName))) {
-                return this.setValueAt(columnIndex, rowIndex, value);
-            }
-            return this;
-        };
-        /**
-         * Sets the value at the specified position
-         **/
-        DataSet.prototype.setValueAt = function (columnIndex, rowIndex, value) {
-            if (this.rows.count > rowIndex && this.rows.item(rowIndex).hasValueAt(columnIndex))
-                this.rows.item(rowIndex).setValueAt(columnIndex, value);
-            else if (this.rows.count <= rowIndex)
-                throw new latte.InvalidArgumentEx('rowIndex', rowIndex);
-            else
-                throw new latte.InvalidArgumentEx('columnIndex', columnIndex);
-            return this;
-        };
-        return DataSet;
-    }());
-    latte.DataSet = DataSet;
-})(latte || (latte = {}));
-var latte;
-(function (latte) {
-    /**
-     * Represents a column of data for <c>DataSet</c>
-     **/
-    var DataSetColumn = /** @class */ (function () {
-        /**
-         * Creates the column.
-         Optionally specifies its name, type and length.
-         **/
-        function DataSetColumn(name, type, length) {
-            if (name === void 0) { name = ''; }
-            if (type === void 0) { type = ''; }
-            if (length === void 0) { length = 0; }
-            this.optionsChanged = new latte.LatteEvent(this);
-            this.name = name;
-            this.type = type;
-            this.length = length;
-        }
-        Object.defineProperty(DataSetColumn.prototype, "length", {
-            /**
-             * Gets or sets the length of the column values.
-             **/
-            get: function () {
-                return this._length;
-            },
-            /**
-             * Gets or sets the length of the column values.
-             **/
-            set: function (value) {
-                this._length = value;
-            },
-            enumerable: true,
-            configurable: true
-        });
-        Object.defineProperty(DataSetColumn.prototype, "name", {
-            /**
-             * Gets or sets the name of the column.
-             **/
-            get: function () {
-                return this._name;
-            },
-            /**
-             * Gets or sets the name of the column.
-             **/
-            set: function (value) {
-                this._name = value;
-            },
-            enumerable: true,
-            configurable: true
-        });
-        /**
-         * Raises the <c>optionsChanged</c> event.
-         **/
-        DataSetColumn.prototype.onOptionsChanged = function () {
-            this.optionsChanged.raise();
-        };
-        Object.defineProperty(DataSetColumn.prototype, "options", {
-            /**
-             * Gets or sets the options of the column.
-             **/
-            get: function () {
-                return this._options;
-            },
-            /**
-             * Gets or sets the options of the column.
-             **/
-            set: function (value /*(any|Array)*/) {
-                this._options = value;
-                this.onOptionsChanged();
-            },
-            enumerable: true,
-            configurable: true
-        });
-        Object.defineProperty(DataSetColumn.prototype, "tag", {
-            /**
-             * Gets or sets a generic tag value for the object
-             **/
-            get: function () {
-                return this._tag;
-            },
-            /**
-             * Gets or sets a generic tag value for the object
-             **/
-            set: function (value) {
-                this._tag = value;
-            },
-            enumerable: true,
-            configurable: true
-        });
-        Object.defineProperty(DataSetColumn.prototype, "type", {
-            /**
-             * Gets or sets the type of the column values.
-             **/
-            get: function () {
-                return this._type;
-            },
-            /**
-             * Gets or sets the type of the column values.
-             **/
-            set: function (value) {
-                this._type = value;
-            },
-            enumerable: true,
-            configurable: true
-        });
-        return DataSetColumn;
-    }());
-    latte.DataSetColumn = DataSetColumn;
-})(latte || (latte = {}));
-var latte;
-(function (latte) {
-    /**
-     * Represents a row of data for <c>DataSet</c>
-     **/
-    var DataSetRow = /** @class */ (function () {
-        /**
-         * Creates the row of data. Optionally sets the array of data
-         **/
-        function DataSetRow(data) {
-            if (data === void 0) { data = []; }
-            this.data = data;
-            if (data)
-                this.data = data;
-            else
-                this.data = [];
-        }
-        /**
-         * Gets the data as an array of specified positions. Undefined positions will be set to null
-         **/
-        DataSetRow.prototype.getDataArray = function (columns) {
-            var a = [];
-            for (var i = 0; i < columns; i++)
-                if (latte._undef(this.data[i]))
-                    a[i] = null;
-                else
-                    a[i] = this.data[i];
-            return a;
-        };
-        /**
-         * Gets a value indicating if there is a value at the specified index
-         **/
-        DataSetRow.prototype.hasValueAt = function (index) {
-            return !latte._undef(this.data[index]);
-        };
-        Object.defineProperty(DataSetRow.prototype, "readOnly", {
-            /**
-             * Gets or sets a value indicating if the row is read-only
-             **/
-            get: function () {
-                return this._readOnly;
-            },
-            /**
-             * Gets or sets a value indicating if the row is read-only
-             **/
-            set: function (value) {
-                this._readOnly = value;
-            },
-            enumerable: true,
-            configurable: true
-        });
-        Object.defineProperty(DataSetRow.prototype, "tag", {
-            /**
-             * Gets or sets the value at the specified position
-             **/
-            get: function () {
-                return this._tag;
-            },
-            /**
-             * Gets or sets the value at the specified position
-             **/
-            set: function (value) {
-                this._tag = value;
-            },
-            enumerable: true,
-            configurable: true
-        });
-        /**
-         * Gets or sets the value at the specified position
-         **/
-        DataSetRow.prototype.getValueAt = function (index) {
-            return this.data[index];
-        };
-        /**
-         * Gets or sets the value at the specified position
-         **/
-        DataSetRow.prototype.setValueAt = function (index, value) {
-            this.data[index] = value;
-        };
-        return DataSetRow;
-    }());
-    latte.DataSetRow = DataSetRow;
 })(latte || (latte = {}));
 var latte;
 (function (latte) {
@@ -2372,20 +2337,55 @@ var latte;
     }());
     latte.ValueSingleDataBind = ValueSingleDataBind;
 })(latte || (latte = {}));
+var latte;
+(function (latte) {
+    /**
+     * Represents a collection of records
+     */
+    var DataRecordCollection = /** @class */ (function (_super) {
+        __extends(DataRecordCollection, _super);
+        /**
+         * Creates the collection of the specified type.
+         * Optionally specifies handlers for adding and removing items, and a
+         * context to call as closure of events.
+         *
+         * @param addCallback
+         * @param removeCallback
+         * @param context
+         */
+        function DataRecordCollection(addCallback, removeCallback, context) {
+            if (addCallback === void 0) { addCallback = null; }
+            if (removeCallback === void 0) { removeCallback = null; }
+            if (context === void 0) { context = null; }
+            return _super.call(this, addCallback, removeCallback, context) || this;
+        }
+        /**
+         * Finds the record of the specified <c>id</c>
+         *
+         * @param id
+         * @returns {null}
+         */
+        DataRecordCollection.prototype.byId = function (id) {
+            return null;
+        };
+        return DataRecordCollection;
+    }(latte.Collection));
+    latte.DataRecordCollection = DataRecordCollection;
+})(latte || (latte = {}));
 /// <reference path="/Users/daniel/Projects/Racks/latte/latte.data/support/ts-include/datalatte.d.ts" />
 /// <reference path="/Users/daniel/Projects/Racks/latte/latte.data/support/ts-include/latte.d.ts" />
 /// <reference path="/Users/daniel/Projects/Racks/latte/latte.data/support/ts-include/latte.data.strings.d.ts" />
 /// <reference path="/Users/daniel/Projects/Racks/latte/latte.data/support/ts-include/latte.strings.d.ts" />
 /// <reference path="/Users/daniel/Projects/Racks/latte/latte.data/ts/IRecordMeta.ts" />
 /// <reference path="/Users/daniel/Projects/Racks/latte/latte.data/ts/DataBindActor.ts" />
-/// <reference path="/Users/daniel/Projects/Racks/latte/latte.data/ts/DataBindCoercion.ts" />
-/// <reference path="/Users/daniel/Projects/Racks/latte/latte.data/ts/DataRecord.ts" />
-/// <reference path="/Users/daniel/Projects/Racks/latte/latte.data/ts/DataRecordCollection.ts" />
 /// <reference path="/Users/daniel/Projects/Racks/latte/latte.data/ts/DataSet.ts" />
 /// <reference path="/Users/daniel/Projects/Racks/latte/latte.data/ts/DataSetColumn.ts" />
+/// <reference path="/Users/daniel/Projects/Racks/latte/latte.data/ts/DataBindCoercion.ts" />
 /// <reference path="/Users/daniel/Projects/Racks/latte/latte.data/ts/DataSetRow.ts" />
+/// <reference path="/Users/daniel/Projects/Racks/latte/latte.data/ts/DataRecord.ts" />
 /// <reference path="/Users/daniel/Projects/Racks/latte/latte.data/ts/Message.ts" />
 /// <reference path="/Users/daniel/Projects/Racks/latte/latte.data/ts/RemoteCall.ts" />
 /// <reference path="/Users/daniel/Projects/Racks/latte/latte.data/ts/RemoteResponse.ts" />
 /// <reference path="/Users/daniel/Projects/Racks/latte/latte.data/ts/ValueDataBind.ts" />
-/// <reference path="/Users/daniel/Projects/Racks/latte/latte.data/ts/ValueSingleDataBind.ts" /> 
+/// <reference path="/Users/daniel/Projects/Racks/latte/latte.data/ts/ValueSingleDataBind.ts" />
+/// <reference path="/Users/daniel/Projects/Racks/latte/latte.data/ts/DataRecordCollection.ts" /> 

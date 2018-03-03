@@ -9,16 +9,6 @@ class productBase extends DataRecord{
 	public function getModule(){ return 'app'; }
 	public function isInserted(){ return isset($this->idproduct); }
 }
-class levelBase extends DataRecord{
-	public $idlevel, $idrack, $created;
-	public static function all($t = "level"){ return array("$t.idlevel AS '$t.idlevel'", "$t.idrack AS '$t.idrack'", "$t.created AS '$t.created'"); }
-	public static function gettable(){ return "level"; }
-	public function getAutoKey(){ return array( "idlevel" => $this->idlevel ); }
-	public function getKeys(){ return array(  ); }
-	public function getFields(){ return array( "idrack" => $this->idrack, "created" => $this->created ); }
-	public function getModule(){ return 'app'; }
-	public function isInserted(){ return isset($this->idlevel); }
-}
 class locationBase extends DataRecord{
 	public $idlocation, $idlevel, $idproduct, $quantity, $created;
 	public static function all($t = "location"){ return array("$t.idlocation AS '$t.idlocation'", "$t.idlevel AS '$t.idlevel'", "$t.idproduct AS '$t.idproduct'", "$t.quantity AS '$t.quantity'", "$t.created AS '$t.created'"); }
@@ -38,4 +28,14 @@ class rackBase extends DataRecord{
 	public function getFields(){ return array( "name" => $this->name, "created" => $this->created ); }
 	public function getModule(){ return 'app'; }
 	public function isInserted(){ return isset($this->idrack); }
+}
+class levelBase extends DataRecord{
+	public $idlevel, $idrack, $created;
+	public static function all($t = "level"){ return array("$t.idlevel AS '$t.idlevel'", "$t.idrack AS '$t.idrack'", "$t.created AS '$t.created'"); }
+	public static function gettable(){ return "level"; }
+	public function getAutoKey(){ return array( "idlevel" => $this->idlevel ); }
+	public function getKeys(){ return array(  ); }
+	public function getFields(){ return array( "idrack" => $this->idrack, "created" => $this->created ); }
+	public function getModule(){ return 'app'; }
+	public function isInserted(){ return isset($this->idlevel); }
 }

@@ -988,6 +988,20 @@ declare module latte {
     }
 }
 /**
+ * Created by josemanuel on 5/29/15.
+ */
+declare module latte {
+    /**
+     *
+     */
+    class CollectionDataBind {
+        /**
+         * Creates and automatically sets up the binding
+         */
+        constructor(element: Element<HTMLElement>, elementProperty: string, collection: Collection<any>, type?: DataBindType);
+    }
+}
+/**
  * Created by josemanuel on 4/15/15.
  */
 declare module latte {
@@ -1105,20 +1119,6 @@ declare module latte {
          * @param {string} value
          */
         value: string;
-    }
-}
-/**
- * Created by josemanuel on 5/29/15.
- */
-declare module latte {
-    /**
-     *
-     */
-    class CollectionDataBind {
-        /**
-         * Creates and automatically sets up the binding
-         */
-        constructor(element: Element<HTMLElement>, elementProperty: string, collection: Collection<any>, type?: DataBindType);
     }
 }
 /**

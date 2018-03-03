@@ -37,18 +37,6 @@ declare module latte {
         shortCode: string;
     }
 }
-declare module latte {
-    /**
-     * Object who contains marshalled call data
-     */
-    interface IDataRemoteCall {
-        moduleName: string;
-        className: string;
-        method: string;
-        id: number;
-        params: any;
-    }
-}
 /**
  * Created by josemanuel on 8/9/16.
  */
@@ -68,6 +56,18 @@ declare module latte {
          * @param form
          */
         onFormCreating?(form: any): any;
+    }
+}
+declare module latte {
+    /**
+     * Object who contains marshalled call data
+     */
+    interface IDataRemoteCall {
+        moduleName: string;
+        className: string;
+        method: string;
+        id: number;
+        params: any;
     }
 }
 /**
@@ -1024,6 +1024,62 @@ declare module latte {
     }
 }
 declare module latte {
+    /**
+     *
+     */
+    class CollectionEvent<T> {
+        /**
+         * Initializes the event
+         */
+        constructor(item: T, itemIndex?: number, cancellable?: boolean);
+        /**
+         * Property field
+         */
+        private _cancel;
+        /**
+         * Gets or sets a value indicating if the event can be cancelled
+         *
+         * @returns {boolean}
+         */
+        /**
+         * Gets or sets a value indicating if the event can be cancelled
+         *
+         * @param {boolean} value
+         */
+        cancel: boolean;
+        /**
+         * Property field
+         */
+        private _cancellable;
+        /**
+         * Gets a value indicating if the event is cancellable
+         *
+         * @returns {boolean}
+         */
+        readonly cancellable: boolean;
+        /**
+         * Property field
+         */
+        private _item;
+        /**
+         * Gets the item of the event
+         *
+         * @returns {any}
+         */
+        readonly item: T;
+        /**
+         * Property field
+         */
+        private _itemIndex;
+        /**
+         * Gets the index of the item concerning the event
+         *
+         * @returns {number}
+         */
+        readonly itemIndex: number;
+    }
+}
+declare module latte {
     interface CollectionEventHanler<T> {
         (item: T, e: CollectionEvent<T>): any;
     }
@@ -1218,62 +1274,6 @@ declare module latte {
          * @returns {number}
          */
         readonly length: number;
-    }
-}
-declare module latte {
-    /**
-     *
-     */
-    class CollectionEvent<T> {
-        /**
-         * Initializes the event
-         */
-        constructor(item: T, itemIndex?: number, cancellable?: boolean);
-        /**
-         * Property field
-         */
-        private _cancel;
-        /**
-         * Gets or sets a value indicating if the event can be cancelled
-         *
-         * @returns {boolean}
-         */
-        /**
-         * Gets or sets a value indicating if the event can be cancelled
-         *
-         * @param {boolean} value
-         */
-        cancel: boolean;
-        /**
-         * Property field
-         */
-        private _cancellable;
-        /**
-         * Gets a value indicating if the event is cancellable
-         *
-         * @returns {boolean}
-         */
-        readonly cancellable: boolean;
-        /**
-         * Property field
-         */
-        private _item;
-        /**
-         * Gets the item of the event
-         *
-         * @returns {any}
-         */
-        readonly item: T;
-        /**
-         * Property field
-         */
-        private _itemIndex;
-        /**
-         * Gets the index of the item concerning the event
-         *
-         * @returns {number}
-         */
-        readonly itemIndex: number;
     }
 }
 declare module latte {

@@ -65,6 +65,132 @@ declare module latte {
 }
 declare module latte {
     /**
+     * Represents a set of structured data
+     **/
+    class DataSet {
+        /**
+         * Columns of the dataset
+         **/
+        columns: Collection<DataSetColumn>;
+        /**
+         * Rows of data
+         **/
+        rows: Collection<DataSetRow>;
+        /**
+         * Creates the dataset
+         **/
+        constructor();
+        /**
+         * Creates a <c>DataSet</c> from the dataset specified as a JSON object
+         **/
+        static fromServerObject(dataset: any): DataSet;
+        /**
+         * Converts the type sent by server to a type compatible with <c>InputItem</c>
+         **/
+        static fromServerType(type: string): string;
+        /**
+         * Gets the index of the column by passing the name of the column
+         **/
+        getColumnIndex(columnName: string): number;
+        /**
+         * Gets the data as an array of arrays
+         **/
+        getDataArray(): any[];
+        /**
+         * Gets the value of the specified column at the specified row index
+         **/
+        getValue(columnName: string, rowIndex: number): any;
+        /**
+         * Gets the value at the specified position
+         **/
+        getValueAt(columnIndex: number, rowIndex: number): any;
+        /**
+         * Sets the value at the specified position
+         **/
+        setValue(columnName: string, rowIndex: number, value: any): DataSet;
+        /**
+         * Sets the value at the specified position
+         **/
+        setValueAt(columnIndex: number, rowIndex: number, value: any): DataSet;
+    }
+}
+declare module latte {
+    /**
+     * Represents a column of data for <c>DataSet</c>
+     **/
+    class DataSetColumn {
+        /**
+         *
+         **/
+        private _length;
+        /**
+         *
+         **/
+        private _name;
+        /**
+         *
+         **/
+        private _options;
+        /**
+         *
+         **/
+        private _tag;
+        /**
+         *
+         **/
+        private _type;
+        /**
+         * Raised when <c>options</c> value is changed.
+         **/
+        optionsChanged: LatteEvent;
+        /**
+         * Creates the column.
+         Optionally specifies its name, type and length.
+         **/
+        constructor(name?: string, type?: string, length?: number);
+        /**
+         * Gets or sets the length of the column values.
+         **/
+        /**
+         * Gets or sets the length of the column values.
+         **/
+        length: number;
+        /**
+         * Gets or sets the name of the column.
+         **/
+        /**
+         * Gets or sets the name of the column.
+         **/
+        name: string;
+        /**
+         * Raises the <c>optionsChanged</c> event.
+         **/
+        onOptionsChanged(): void;
+        /**
+         * Gets or sets the options of the column.
+         **/
+        /**
+         * Gets or sets the options of the column.
+         **/
+        options: any;
+        /**
+         * Gets or sets a generic tag value for the object
+         **/
+        /**
+         * Gets or sets a generic tag value for the object
+         **/
+        tag: any;
+        /**
+         * Gets or sets the type of the column values.
+         **/
+        /**
+         * Gets or sets the type of the column values.
+         **/
+        type: string;
+    }
+}
+declare module latte {
+    /**
      * Initialize, then call value property to obtain coerced value
      */
     class DataBindCoercion {
@@ -87,6 +213,60 @@ declare module latte {
          * @param {string} typeAsString
          */
         static parseType(typeAsString?: string): BindValueType;
+    }
+}
+declare module latte {
+    /**
+     * Represents a row of data for <c>DataSet</c>
+     **/
+    class DataSetRow {
+        data: Array<any>;
+        /**
+         *
+         **/
+        private _dataSet;
+        /**
+         *
+         **/
+        private _readOnly;
+        /**
+         *
+         **/
+        private _tag;
+        /**
+         * Creates the row of data. Optionally sets the array of data
+         **/
+        constructor(data?: Array<any>);
+        /**
+         * Gets the data as an array of specified positions. Undefined positions will be set to null
+         **/
+        getDataArray(columns: number): Array<any>;
+        /**
+         * Gets a value indicating if there is a value at the specified index
+         **/
+        hasValueAt(index: number): boolean;
+        /**
+         * Gets or sets a value indicating if the row is read-only
+         **/
+        /**
+         * Gets or sets a value indicating if the row is read-only
+         **/
+        readOnly: boolean;
+        /**
+         * Gets or sets the value at the specified position
+         **/
+        /**
+         * Gets or sets the value at the specified position
+         **/
+        tag: any;
+        /**
+         * Gets or sets the value at the specified position
+         **/
+        getValueAt(index: number): any;
+        /**
+         * Gets or sets the value at the specified position
+         **/
+        setValueAt(index: number, value: any): void;
     }
 }
 declare module latte {
@@ -366,210 +546,6 @@ declare module latte {
          * Gets or sets an arbitrary value for the record
          **/
         tag: string;
-    }
-}
-declare module latte {
-    /**
-     * Represents a collection of records
-     */
-    class DataRecordCollection extends Collection<DataRecord> {
-        /**
-         * Creates the collection of the specified type.
-         * Optionally specifies handlers for adding and removing items, and a
-         * context to call as closure of events.
-         *
-         * @param addCallback
-         * @param removeCallback
-         * @param context
-         */
-        constructor(addCallback?: (DataRecord, number) => any, removeCallback?: (DataRecord, number) => any, context?: any);
-        /**
-         * Finds the record of the specified <c>id</c>
-         *
-         * @param id
-         * @returns {null}
-         */
-        byId(id: number): DataRecord;
-    }
-}
-declare module latte {
-    /**
-     * Represents a set of structured data
-     **/
-    class DataSet {
-        /**
-         * Columns of the dataset
-         **/
-        columns: Collection<DataSetColumn>;
-        /**
-         * Rows of data
-         **/
-        rows: Collection<DataSetRow>;
-        /**
-         * Creates the dataset
-         **/
-        constructor();
-        /**
-         * Creates a <c>DataSet</c> from the dataset specified as a JSON object
-         **/
-        static fromServerObject(dataset: any): DataSet;
-        /**
-         * Converts the type sent by server to a type compatible with <c>InputItem</c>
-         **/
-        static fromServerType(type: string): string;
-        /**
-         * Gets the index of the column by passing the name of the column
-         **/
-        getColumnIndex(columnName: string): number;
-        /**
-         * Gets the data as an array of arrays
-         **/
-        getDataArray(): any[];
-        /**
-         * Gets the value of the specified column at the specified row index
-         **/
-        getValue(columnName: string, rowIndex: number): any;
-        /**
-         * Gets the value at the specified position
-         **/
-        getValueAt(columnIndex: number, rowIndex: number): any;
-        /**
-         * Sets the value at the specified position
-         **/
-        setValue(columnName: string, rowIndex: number, value: any): DataSet;
-        /**
-         * Sets the value at the specified position
-         **/
-        setValueAt(columnIndex: number, rowIndex: number, value: any): DataSet;
-    }
-}
-declare module latte {
-    /**
-     * Represents a column of data for <c>DataSet</c>
-     **/
-    class DataSetColumn {
-        /**
-         *
-         **/
-        private _length;
-        /**
-         *
-         **/
-        private _name;
-        /**
-         *
-         **/
-        private _options;
-        /**
-         *
-         **/
-        private _tag;
-        /**
-         *
-         **/
-        private _type;
-        /**
-         * Raised when <c>options</c> value is changed.
-         **/
-        optionsChanged: LatteEvent;
-        /**
-         * Creates the column.
-         Optionally specifies its name, type and length.
-         **/
-        constructor(name?: string, type?: string, length?: number);
-        /**
-         * Gets or sets the length of the column values.
-         **/
-        /**
-         * Gets or sets the length of the column values.
-         **/
-        length: number;
-        /**
-         * Gets or sets the name of the column.
-         **/
-        /**
-         * Gets or sets the name of the column.
-         **/
-        name: string;
-        /**
-         * Raises the <c>optionsChanged</c> event.
-         **/
-        onOptionsChanged(): void;
-        /**
-         * Gets or sets the options of the column.
-         **/
-        /**
-         * Gets or sets the options of the column.
-         **/
-        options: any;
-        /**
-         * Gets or sets a generic tag value for the object
-         **/
-        /**
-         * Gets or sets a generic tag value for the object
-         **/
-        tag: any;
-        /**
-         * Gets or sets the type of the column values.
-         **/
-        /**
-         * Gets or sets the type of the column values.
-         **/
-        type: string;
-    }
-}
-declare module latte {
-    /**
-     * Represents a row of data for <c>DataSet</c>
-     **/
-    class DataSetRow {
-        data: Array<any>;
-        /**
-         *
-         **/
-        private _dataSet;
-        /**
-         *
-         **/
-        private _readOnly;
-        /**
-         *
-         **/
-        private _tag;
-        /**
-         * Creates the row of data. Optionally sets the array of data
-         **/
-        constructor(data?: Array<any>);
-        /**
-         * Gets the data as an array of specified positions. Undefined positions will be set to null
-         **/
-        getDataArray(columns: number): Array<any>;
-        /**
-         * Gets a value indicating if there is a value at the specified index
-         **/
-        hasValueAt(index: number): boolean;
-        /**
-         * Gets or sets a value indicating if the row is read-only
-         **/
-        /**
-         * Gets or sets a value indicating if the row is read-only
-         **/
-        readOnly: boolean;
-        /**
-         * Gets or sets the value at the specified position
-         **/
-        /**
-         * Gets or sets the value at the specified position
-         **/
-        tag: any;
-        /**
-         * Gets or sets the value at the specified position
-         **/
-        getValueAt(index: number): any;
-        /**
-         * Gets or sets the value at the specified position
-         **/
-        setValueAt(index: number, value: any): void;
     }
 }
 declare module latte {
@@ -1149,5 +1125,29 @@ declare module latte {
          * @returns {DataBindActor}
          */
         readonly targetActor: DataBindActor;
+    }
+}
+declare module latte {
+    /**
+     * Represents a collection of records
+     */
+    class DataRecordCollection extends Collection<DataRecord> {
+        /**
+         * Creates the collection of the specified type.
+         * Optionally specifies handlers for adding and removing items, and a
+         * context to call as closure of events.
+         *
+         * @param addCallback
+         * @param removeCallback
+         * @param context
+         */
+        constructor(addCallback?: (DataRecord, number) => any, removeCallback?: (DataRecord, number) => any, context?: any);
+        /**
+         * Finds the record of the specified <c>id</c>
+         *
+         * @param id
+         * @returns {null}
+         */
+        byId(id: number): DataRecord;
     }
 }

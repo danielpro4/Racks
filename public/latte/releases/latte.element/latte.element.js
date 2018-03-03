@@ -2093,6 +2093,31 @@ var latte;
     latte.LocalEditor = LocalEditor;
 })(latte || (latte = {}));
 /**
+ * Created by josemanuel on 5/29/15.
+ */
+var latte;
+(function (latte) {
+    /**
+     *
+     */
+    var CollectionDataBind = /** @class */ (function () {
+        //region Static
+        //endregion
+        //region Fields
+        //endregion
+        /**
+         * Creates and automatically sets up the binding
+         */
+        function CollectionDataBind(element, elementProperty, collection, type) {
+            if (type === void 0) { type = latte.DataBindType.AUTO; }
+            collection.each(function (object) {
+            });
+        }
+        return CollectionDataBind;
+    }());
+    latte.CollectionDataBind = CollectionDataBind;
+})(latte || (latte = {}));
+/**
  * Created by josemanuel on 4/15/15.
  */
 var latte;
@@ -2335,31 +2360,6 @@ var latte;
         return Textbox;
     }(latte.Element));
     latte.Textbox = Textbox;
-})(latte || (latte = {}));
-/**
- * Created by josemanuel on 5/29/15.
- */
-var latte;
-(function (latte) {
-    /**
-     *
-     */
-    var CollectionDataBind = /** @class */ (function () {
-        //region Static
-        //endregion
-        //region Fields
-        //endregion
-        /**
-         * Creates and automatically sets up the binding
-         */
-        function CollectionDataBind(element, elementProperty, collection, type) {
-            if (type === void 0) { type = latte.DataBindType.AUTO; }
-            collection.each(function (object) {
-            });
-        }
-        return CollectionDataBind;
-    }());
-    latte.CollectionDataBind = CollectionDataBind;
 })(latte || (latte = {}));
 /**
  * Created by josemanuel on 5/28/15.
@@ -2840,8 +2840,8 @@ var latte;
 /// <reference path="/Users/daniel/Projects/Racks/latte/latte.element/ts/DivElement.ts" />
 /// <reference path="/Users/daniel/Projects/Racks/latte/latte.element/ts/ElementCollection.ts" />
 /// <reference path="/Users/daniel/Projects/Racks/latte/latte.element/ts/LocalEditor.ts" />
-/// <reference path="/Users/daniel/Projects/Racks/latte/latte.element/ts/Textbox.ts" />
 /// <reference path="/Users/daniel/Projects/Racks/latte/latte.element/ts/data-bind/CollectionDataBind.ts" />
+/// <reference path="/Users/daniel/Projects/Racks/latte/latte.element/ts/Textbox.ts" />
 /// <reference path="/Users/daniel/Projects/Racks/latte/latte.element/ts/data-bind/DataBind.ts" />
 /// <reference path="/Users/daniel/Projects/Racks/latte/latte.element/ts/data-bind/DefaultDataAdapter.ts" />
 /// <reference path="/Users/daniel/Projects/Racks/latte/latte.element/ts/data-bind/EventBind.ts" /> 

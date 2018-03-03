@@ -376,6 +376,163 @@ module latte{
 		static nativeTypes = {"idproduct":"int(10) unsigned","sku":"varchar(128)","name":"varchar(128)","price":"decimal(15,2)","unit":"varchar(128)","image":"varchar(128)","active":"tinyint(1)","created":"timestamp"};
 	}
 
+	export class levelBase extends DataRecord{
+
+		/* Name of Php record */
+		_recordType: string = 'Level';
+
+		/* Name of Module where record lives */
+		_moduleName: string = 'app';
+
+		/**
+		 * Database field: int(10) unsigned
+		 */
+		_idlevel: number = null;
+
+		/**
+		 * Gets or sets the value of the idlevel field of type int(10) unsigned
+		 */
+		get idlevel(): number{
+			return this._idlevel;
+		}
+
+		/**
+		 * Gets or sets the value of the idlevel field of type int(10) unsigned
+		 */
+		set idlevel(value: number){
+			var changed: boolean = value !== this._idlevel
+			this._idlevel = value;
+			if(changed){ this.onIdlevelChanged(); }
+		}
+
+		/**
+		 * Back field for event
+		 */
+		_idlevelChanged: LatteEvent;
+
+		/**
+		 * Gets an event raised when the value of the idlevel property changes
+		 */
+		get idlevelChanged(): LatteEvent{
+			if(!this._idlevelChanged){ this._idlevelChanged = new LatteEvent(this); }
+			return this._idlevelChanged;
+		}
+
+		/**
+		 * Raises the <c>idlevelChanged</c> event
+		 */
+		onIdlevelChanged(){
+			if(this._idlevelChanged){
+				this._idlevelChanged.raise()
+			}
+			this.onFieldValueChanged('idlevel', this.idlevel)
+		}
+
+		/**
+		* Gets the name of the autoincrement field
+		**/
+		onGetRecordIdName(): string { return 'idlevel'; }
+
+		/**
+		 * Database field: int(10) unsigned
+		 */
+		_idrack: number = null;
+
+		/**
+		 * Gets or sets the value of the idrack field of type int(10) unsigned
+		 */
+		get idrack(): number{
+			return this._idrack;
+		}
+
+		/**
+		 * Gets or sets the value of the idrack field of type int(10) unsigned
+		 */
+		set idrack(value: number){
+			var changed: boolean = value !== this._idrack
+			this._idrack = value;
+			if(changed){ this.onIdrackChanged(); }
+		}
+
+		/**
+		 * Back field for event
+		 */
+		_idrackChanged: LatteEvent;
+
+		/**
+		 * Gets an event raised when the value of the idrack property changes
+		 */
+		get idrackChanged(): LatteEvent{
+			if(!this._idrackChanged){ this._idrackChanged = new LatteEvent(this); }
+			return this._idrackChanged;
+		}
+
+		/**
+		 * Raises the <c>idrackChanged</c> event
+		 */
+		onIdrackChanged(){
+			if(this._idrackChanged){
+				this._idrackChanged.raise()
+			}
+			this.onFieldValueChanged('idrack', this.idrack)
+		}
+
+		/**
+		 * Database field: timestamp
+		 */
+		_created: TimeSpan = null;
+
+		/**
+		 * Gets or sets the value of the created field of type timestamp
+		 */
+		get created(): TimeSpan{
+			return this._created;
+		}
+
+		/**
+		 * Gets or sets the value of the created field of type timestamp
+		 */
+		set created(value: TimeSpan){
+			var changed: boolean = value !== this._created
+			this._created = value;
+			if(changed){ this.onCreatedChanged(); }
+		}
+
+		/**
+		 * Back field for event
+		 */
+		_createdChanged: LatteEvent;
+
+		/**
+		 * Gets an event raised when the value of the created property changes
+		 */
+		get createdChanged(): LatteEvent{
+			if(!this._createdChanged){ this._createdChanged = new LatteEvent(this); }
+			return this._createdChanged;
+		}
+
+		/**
+		 * Raises the <c>createdChanged</c> event
+		 */
+		onCreatedChanged(){
+			if(this._createdChanged){
+				this._createdChanged.raise()
+			}
+			this.onFieldValueChanged('created', this.created)
+		}
+
+		/**
+		* Override. Gets data about the fields of the record.
+		**/
+		onGetFields(): any { return {'idlevel': this.idlevel, 'idrack': this.idrack, 'created': this.created}; }
+
+		/**
+		* Declares the native types of the record.
+		**/
+
+		static nativeTypes = {"idlevel":"int(10) unsigned","idrack":"int(10) unsigned","created":"timestamp"};
+	}
+
 	export class locationBase extends DataRecord{
 
 		/* Name of Php record */
@@ -619,163 +776,6 @@ module latte{
 		**/
 
 		static nativeTypes = {"idlocation":"int(10) unsigned","idlevel":"int(10) unsigned","idproduct":"int(10) unsigned","quantity":"double(8,2)","created":"timestamp"};
-	}
-
-	export class levelBase extends DataRecord{
-
-		/* Name of Php record */
-		_recordType: string = 'Level';
-
-		/* Name of Module where record lives */
-		_moduleName: string = 'app';
-
-		/**
-		 * Database field: int(10) unsigned
-		 */
-		_idlevel: number = null;
-
-		/**
-		 * Gets or sets the value of the idlevel field of type int(10) unsigned
-		 */
-		get idlevel(): number{
-			return this._idlevel;
-		}
-
-		/**
-		 * Gets or sets the value of the idlevel field of type int(10) unsigned
-		 */
-		set idlevel(value: number){
-			var changed: boolean = value !== this._idlevel
-			this._idlevel = value;
-			if(changed){ this.onIdlevelChanged(); }
-		}
-
-		/**
-		 * Back field for event
-		 */
-		_idlevelChanged: LatteEvent;
-
-		/**
-		 * Gets an event raised when the value of the idlevel property changes
-		 */
-		get idlevelChanged(): LatteEvent{
-			if(!this._idlevelChanged){ this._idlevelChanged = new LatteEvent(this); }
-			return this._idlevelChanged;
-		}
-
-		/**
-		 * Raises the <c>idlevelChanged</c> event
-		 */
-		onIdlevelChanged(){
-			if(this._idlevelChanged){
-				this._idlevelChanged.raise()
-			}
-			this.onFieldValueChanged('idlevel', this.idlevel)
-		}
-
-		/**
-		* Gets the name of the autoincrement field
-		**/
-		onGetRecordIdName(): string { return 'idlevel'; }
-
-		/**
-		 * Database field: int(10) unsigned
-		 */
-		_idrack: number = null;
-
-		/**
-		 * Gets or sets the value of the idrack field of type int(10) unsigned
-		 */
-		get idrack(): number{
-			return this._idrack;
-		}
-
-		/**
-		 * Gets or sets the value of the idrack field of type int(10) unsigned
-		 */
-		set idrack(value: number){
-			var changed: boolean = value !== this._idrack
-			this._idrack = value;
-			if(changed){ this.onIdrackChanged(); }
-		}
-
-		/**
-		 * Back field for event
-		 */
-		_idrackChanged: LatteEvent;
-
-		/**
-		 * Gets an event raised when the value of the idrack property changes
-		 */
-		get idrackChanged(): LatteEvent{
-			if(!this._idrackChanged){ this._idrackChanged = new LatteEvent(this); }
-			return this._idrackChanged;
-		}
-
-		/**
-		 * Raises the <c>idrackChanged</c> event
-		 */
-		onIdrackChanged(){
-			if(this._idrackChanged){
-				this._idrackChanged.raise()
-			}
-			this.onFieldValueChanged('idrack', this.idrack)
-		}
-
-		/**
-		 * Database field: timestamp
-		 */
-		_created: TimeSpan = null;
-
-		/**
-		 * Gets or sets the value of the created field of type timestamp
-		 */
-		get created(): TimeSpan{
-			return this._created;
-		}
-
-		/**
-		 * Gets or sets the value of the created field of type timestamp
-		 */
-		set created(value: TimeSpan){
-			var changed: boolean = value !== this._created
-			this._created = value;
-			if(changed){ this.onCreatedChanged(); }
-		}
-
-		/**
-		 * Back field for event
-		 */
-		_createdChanged: LatteEvent;
-
-		/**
-		 * Gets an event raised when the value of the created property changes
-		 */
-		get createdChanged(): LatteEvent{
-			if(!this._createdChanged){ this._createdChanged = new LatteEvent(this); }
-			return this._createdChanged;
-		}
-
-		/**
-		 * Raises the <c>createdChanged</c> event
-		 */
-		onCreatedChanged(){
-			if(this._createdChanged){
-				this._createdChanged.raise()
-			}
-			this.onFieldValueChanged('created', this.created)
-		}
-
-		/**
-		* Override. Gets data about the fields of the record.
-		**/
-		onGetFields(): any { return {'idlevel': this.idlevel, 'idrack': this.idrack, 'created': this.created}; }
-
-		/**
-		* Declares the native types of the record.
-		**/
-
-		static nativeTypes = {"idlevel":"int(10) unsigned","idrack":"int(10) unsigned","created":"timestamp"};
 	}
 
 	export class rackBase extends DataRecord{

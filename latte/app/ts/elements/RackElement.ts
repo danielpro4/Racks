@@ -113,7 +113,7 @@ module latte {
                             dialog.success.add(() => {
 
                                 // Validación de cantidad
-                                if (Number(view.txtQuantity.value) <= 0) {
+                                if (Number(view.txtQuantity.value) < 0) {
                                     return false;
                                 }
 
