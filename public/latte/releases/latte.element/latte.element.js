@@ -1308,31 +1308,6 @@ var latte;
     }());
     latte.Element = Element;
 })(latte || (latte = {}));
-var latte;
-(function (latte) {
-    /**
-     * Wrapper of a div element
-     */
-    var DivElement = /** @class */ (function (_super) {
-        __extends(DivElement, _super);
-        //region Static
-        //endregion
-        //region Fields
-        //endregion
-        /**
-         *
-         */
-        function DivElement(className) {
-            if (className === void 0) { className = null; }
-            var _this = _super.call(this) || this;
-            if (className)
-                _this.addClass(className);
-            return _this;
-        }
-        return DivElement;
-    }(latte.Element));
-    latte.DivElement = DivElement;
-})(latte || (latte = {}));
 /**
  * Created by josemanuel on 4/20/15.
  */
@@ -1647,6 +1622,31 @@ var latte;
         return Animation;
     }());
     latte.Animation = Animation;
+})(latte || (latte = {}));
+var latte;
+(function (latte) {
+    /**
+     * Wrapper of a div element
+     */
+    var DivElement = /** @class */ (function (_super) {
+        __extends(DivElement, _super);
+        //region Static
+        //endregion
+        //region Fields
+        //endregion
+        /**
+         *
+         */
+        function DivElement(className) {
+            if (className === void 0) { className = null; }
+            var _this = _super.call(this) || this;
+            if (className)
+                _this.addClass(className);
+            return _this;
+        }
+        return DivElement;
+    }(latte.Element));
+    latte.DivElement = DivElement;
 })(latte || (latte = {}));
 /**
  * Created by josemanuel on 5/28/15.
@@ -2679,6 +2679,46 @@ var latte;
 var latte;
 (function (latte) {
     /**
+     * Represents a very simple data adapter that passes the data along as strings.
+     */
+    var DefaultDataAdapter = /** @class */ (function () {
+        //region Static
+        //endregion
+        //region Fields
+        //endregion
+        /**
+         * Creates the adapter
+         */
+        function DefaultDataAdapter() {
+        }
+        //region Private Methods
+        //endregion
+        //region Methods
+        /**
+         * Transforms the value of the record into a proper value for the element
+         *
+         * @param value
+         */
+        DefaultDataAdapter.prototype.adaptForElement = function (value) {
+            return value;
+        };
+        /**
+         * Transforms the value of the element into a proper value for the record
+         * @param value
+         */
+        DefaultDataAdapter.prototype.adaptForRecord = function (value) {
+            return value;
+        };
+        return DefaultDataAdapter;
+    }());
+    latte.DefaultDataAdapter = DefaultDataAdapter;
+})(latte || (latte = {}));
+/**
+ * Created by josemanuel on 5/28/15.
+ */
+var latte;
+(function (latte) {
+    /**
      *
      */
     var EventBind = /** @class */ (function () {
@@ -2789,46 +2829,6 @@ var latte;
     }());
     latte.EventBind = EventBind;
 })(latte || (latte = {}));
-/**
- * Created by josemanuel on 5/28/15.
- */
-var latte;
-(function (latte) {
-    /**
-     * Represents a very simple data adapter that passes the data along as strings.
-     */
-    var DefaultDataAdapter = /** @class */ (function () {
-        //region Static
-        //endregion
-        //region Fields
-        //endregion
-        /**
-         * Creates the adapter
-         */
-        function DefaultDataAdapter() {
-        }
-        //region Private Methods
-        //endregion
-        //region Methods
-        /**
-         * Transforms the value of the record into a proper value for the element
-         *
-         * @param value
-         */
-        DefaultDataAdapter.prototype.adaptForElement = function (value) {
-            return value;
-        };
-        /**
-         * Transforms the value of the element into a proper value for the record
-         * @param value
-         */
-        DefaultDataAdapter.prototype.adaptForRecord = function (value) {
-            return value;
-        };
-        return DefaultDataAdapter;
-    }());
-    latte.DefaultDataAdapter = DefaultDataAdapter;
-})(latte || (latte = {}));
 /// <reference path="/Users/daniel/Projects/Racks/latte/latte.element/support/ts-include/datalatte.d.ts" />
 /// <reference path="/Users/daniel/Projects/Racks/latte/latte.element/support/ts-include/latte.d.ts" />
 /// <reference path="/Users/daniel/Projects/Racks/latte/latte.element/support/ts-include/latte.data.d.ts" />
@@ -2836,12 +2836,12 @@ var latte;
 /// <reference path="/Users/daniel/Projects/Racks/latte/latte.element/support/ts-include/latte.strings.d.ts" />
 /// <reference path="/Users/daniel/Projects/Racks/latte/latte.element/ts/data-bind/DataAdapter.ts" />
 /// <reference path="/Users/daniel/Projects/Racks/latte/latte.element/ts/Element.ts" />
-/// <reference path="/Users/daniel/Projects/Racks/latte/latte.element/ts/DivElement.ts" />
 /// <reference path="/Users/daniel/Projects/Racks/latte/latte.element/ts/Animation.ts" />
+/// <reference path="/Users/daniel/Projects/Racks/latte/latte.element/ts/DivElement.ts" />
 /// <reference path="/Users/daniel/Projects/Racks/latte/latte.element/ts/ElementCollection.ts" />
 /// <reference path="/Users/daniel/Projects/Racks/latte/latte.element/ts/LocalEditor.ts" />
 /// <reference path="/Users/daniel/Projects/Racks/latte/latte.element/ts/Textbox.ts" />
 /// <reference path="/Users/daniel/Projects/Racks/latte/latte.element/ts/data-bind/CollectionDataBind.ts" />
 /// <reference path="/Users/daniel/Projects/Racks/latte/latte.element/ts/data-bind/DataBind.ts" />
-/// <reference path="/Users/daniel/Projects/Racks/latte/latte.element/ts/data-bind/EventBind.ts" />
-/// <reference path="/Users/daniel/Projects/Racks/latte/latte.element/ts/data-bind/DefaultDataAdapter.ts" /> 
+/// <reference path="/Users/daniel/Projects/Racks/latte/latte.element/ts/data-bind/DefaultDataAdapter.ts" />
+/// <reference path="/Users/daniel/Projects/Racks/latte/latte.element/ts/data-bind/EventBind.ts" /> 

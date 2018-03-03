@@ -1,19 +1,4 @@
-.rack-element { }
 
-.rack-element .table tr td:first-child {
-    vertical-align: middle !important;
-    text-align: center;
-}
-
-.rack-element .table th {
-    background: rgba(85, 96, 113, 0.91);
-    color: white;
-    text-align: center;
-}
-
-.rack-element .table td.location {
-    background: #f6f6f6;
-}
 div.dialog-layover {
     background: rgba(0, 0, 0, 0.5);
     position: fixed;
@@ -83,6 +68,21 @@ div.dialog-layover > div.dialog-element.loader {
     padding-bottom: 5px;
     text-align: center;
     width: 100%;
+}.rack-element { }
+
+.rack-element .table tr td:first-child {
+    vertical-align: middle !important;
+    text-align: center;
+}
+
+.rack-element .table th {
+    background: rgba(85, 96, 113, 0.91);
+    color: white;
+    text-align: center;
+}
+
+.rack-element .table td.location {
+    background: #f6f6f6;
 }.layover-loader {
     position: absolute;
     top: 0;

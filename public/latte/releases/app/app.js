@@ -403,169 +403,6 @@ var latte;
         return productBase;
     }(latte.DataRecord));
     latte.productBase = productBase;
-    var levelBase = /** @class */ (function (_super) {
-        __extends(levelBase, _super);
-        function levelBase() {
-            var _this = _super !== null && _super.apply(this, arguments) || this;
-            /* Name of Php record */
-            _this._recordType = 'Level';
-            /* Name of Module where record lives */
-            _this._moduleName = 'app';
-            /**
-             * Database field: int(10) unsigned
-             */
-            _this._idlevel = null;
-            /**
-             * Database field: int(10) unsigned
-             */
-            _this._idrack = null;
-            /**
-             * Database field: timestamp
-             */
-            _this._created = null;
-            return _this;
-        }
-        Object.defineProperty(levelBase.prototype, "idlevel", {
-            /**
-             * Gets or sets the value of the idlevel field of type int(10) unsigned
-             */
-            get: function () {
-                return this._idlevel;
-            },
-            /**
-             * Gets or sets the value of the idlevel field of type int(10) unsigned
-             */
-            set: function (value) {
-                var changed = value !== this._idlevel;
-                this._idlevel = value;
-                if (changed) {
-                    this.onIdlevelChanged();
-                }
-            },
-            enumerable: true,
-            configurable: true
-        });
-        Object.defineProperty(levelBase.prototype, "idlevelChanged", {
-            /**
-             * Gets an event raised when the value of the idlevel property changes
-             */
-            get: function () {
-                if (!this._idlevelChanged) {
-                    this._idlevelChanged = new latte.LatteEvent(this);
-                }
-                return this._idlevelChanged;
-            },
-            enumerable: true,
-            configurable: true
-        });
-        /**
-         * Raises the <c>idlevelChanged</c> event
-         */
-        levelBase.prototype.onIdlevelChanged = function () {
-            if (this._idlevelChanged) {
-                this._idlevelChanged.raise();
-            }
-            this.onFieldValueChanged('idlevel', this.idlevel);
-        };
-        /**
-        * Gets the name of the autoincrement field
-        **/
-        levelBase.prototype.onGetRecordIdName = function () { return 'idlevel'; };
-        Object.defineProperty(levelBase.prototype, "idrack", {
-            /**
-             * Gets or sets the value of the idrack field of type int(10) unsigned
-             */
-            get: function () {
-                return this._idrack;
-            },
-            /**
-             * Gets or sets the value of the idrack field of type int(10) unsigned
-             */
-            set: function (value) {
-                var changed = value !== this._idrack;
-                this._idrack = value;
-                if (changed) {
-                    this.onIdrackChanged();
-                }
-            },
-            enumerable: true,
-            configurable: true
-        });
-        Object.defineProperty(levelBase.prototype, "idrackChanged", {
-            /**
-             * Gets an event raised when the value of the idrack property changes
-             */
-            get: function () {
-                if (!this._idrackChanged) {
-                    this._idrackChanged = new latte.LatteEvent(this);
-                }
-                return this._idrackChanged;
-            },
-            enumerable: true,
-            configurable: true
-        });
-        /**
-         * Raises the <c>idrackChanged</c> event
-         */
-        levelBase.prototype.onIdrackChanged = function () {
-            if (this._idrackChanged) {
-                this._idrackChanged.raise();
-            }
-            this.onFieldValueChanged('idrack', this.idrack);
-        };
-        Object.defineProperty(levelBase.prototype, "created", {
-            /**
-             * Gets or sets the value of the created field of type timestamp
-             */
-            get: function () {
-                return this._created;
-            },
-            /**
-             * Gets or sets the value of the created field of type timestamp
-             */
-            set: function (value) {
-                var changed = value !== this._created;
-                this._created = value;
-                if (changed) {
-                    this.onCreatedChanged();
-                }
-            },
-            enumerable: true,
-            configurable: true
-        });
-        Object.defineProperty(levelBase.prototype, "createdChanged", {
-            /**
-             * Gets an event raised when the value of the created property changes
-             */
-            get: function () {
-                if (!this._createdChanged) {
-                    this._createdChanged = new latte.LatteEvent(this);
-                }
-                return this._createdChanged;
-            },
-            enumerable: true,
-            configurable: true
-        });
-        /**
-         * Raises the <c>createdChanged</c> event
-         */
-        levelBase.prototype.onCreatedChanged = function () {
-            if (this._createdChanged) {
-                this._createdChanged.raise();
-            }
-            this.onFieldValueChanged('created', this.created);
-        };
-        /**
-        * Override. Gets data about the fields of the record.
-        **/
-        levelBase.prototype.onGetFields = function () { return { 'idlevel': this.idlevel, 'idrack': this.idrack, 'created': this.created }; };
-        /**
-        * Declares the native types of the record.
-        **/
-        levelBase.nativeTypes = { "idlevel": "int(10) unsigned", "idrack": "int(10) unsigned", "created": "timestamp" };
-        return levelBase;
-    }(latte.DataRecord));
-    latte.levelBase = levelBase;
     var locationBase = /** @class */ (function (_super) {
         __extends(locationBase, _super);
         function locationBase() {
@@ -821,6 +658,169 @@ var latte;
         return locationBase;
     }(latte.DataRecord));
     latte.locationBase = locationBase;
+    var levelBase = /** @class */ (function (_super) {
+        __extends(levelBase, _super);
+        function levelBase() {
+            var _this = _super !== null && _super.apply(this, arguments) || this;
+            /* Name of Php record */
+            _this._recordType = 'Level';
+            /* Name of Module where record lives */
+            _this._moduleName = 'app';
+            /**
+             * Database field: int(10) unsigned
+             */
+            _this._idlevel = null;
+            /**
+             * Database field: int(10) unsigned
+             */
+            _this._idrack = null;
+            /**
+             * Database field: timestamp
+             */
+            _this._created = null;
+            return _this;
+        }
+        Object.defineProperty(levelBase.prototype, "idlevel", {
+            /**
+             * Gets or sets the value of the idlevel field of type int(10) unsigned
+             */
+            get: function () {
+                return this._idlevel;
+            },
+            /**
+             * Gets or sets the value of the idlevel field of type int(10) unsigned
+             */
+            set: function (value) {
+                var changed = value !== this._idlevel;
+                this._idlevel = value;
+                if (changed) {
+                    this.onIdlevelChanged();
+                }
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(levelBase.prototype, "idlevelChanged", {
+            /**
+             * Gets an event raised when the value of the idlevel property changes
+             */
+            get: function () {
+                if (!this._idlevelChanged) {
+                    this._idlevelChanged = new latte.LatteEvent(this);
+                }
+                return this._idlevelChanged;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        /**
+         * Raises the <c>idlevelChanged</c> event
+         */
+        levelBase.prototype.onIdlevelChanged = function () {
+            if (this._idlevelChanged) {
+                this._idlevelChanged.raise();
+            }
+            this.onFieldValueChanged('idlevel', this.idlevel);
+        };
+        /**
+        * Gets the name of the autoincrement field
+        **/
+        levelBase.prototype.onGetRecordIdName = function () { return 'idlevel'; };
+        Object.defineProperty(levelBase.prototype, "idrack", {
+            /**
+             * Gets or sets the value of the idrack field of type int(10) unsigned
+             */
+            get: function () {
+                return this._idrack;
+            },
+            /**
+             * Gets or sets the value of the idrack field of type int(10) unsigned
+             */
+            set: function (value) {
+                var changed = value !== this._idrack;
+                this._idrack = value;
+                if (changed) {
+                    this.onIdrackChanged();
+                }
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(levelBase.prototype, "idrackChanged", {
+            /**
+             * Gets an event raised when the value of the idrack property changes
+             */
+            get: function () {
+                if (!this._idrackChanged) {
+                    this._idrackChanged = new latte.LatteEvent(this);
+                }
+                return this._idrackChanged;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        /**
+         * Raises the <c>idrackChanged</c> event
+         */
+        levelBase.prototype.onIdrackChanged = function () {
+            if (this._idrackChanged) {
+                this._idrackChanged.raise();
+            }
+            this.onFieldValueChanged('idrack', this.idrack);
+        };
+        Object.defineProperty(levelBase.prototype, "created", {
+            /**
+             * Gets or sets the value of the created field of type timestamp
+             */
+            get: function () {
+                return this._created;
+            },
+            /**
+             * Gets or sets the value of the created field of type timestamp
+             */
+            set: function (value) {
+                var changed = value !== this._created;
+                this._created = value;
+                if (changed) {
+                    this.onCreatedChanged();
+                }
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(levelBase.prototype, "createdChanged", {
+            /**
+             * Gets an event raised when the value of the created property changes
+             */
+            get: function () {
+                if (!this._createdChanged) {
+                    this._createdChanged = new latte.LatteEvent(this);
+                }
+                return this._createdChanged;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        /**
+         * Raises the <c>createdChanged</c> event
+         */
+        levelBase.prototype.onCreatedChanged = function () {
+            if (this._createdChanged) {
+                this._createdChanged.raise();
+            }
+            this.onFieldValueChanged('created', this.created);
+        };
+        /**
+        * Override. Gets data about the fields of the record.
+        **/
+        levelBase.prototype.onGetFields = function () { return { 'idlevel': this.idlevel, 'idrack': this.idrack, 'created': this.created }; };
+        /**
+        * Declares the native types of the record.
+        **/
+        levelBase.nativeTypes = { "idlevel": "int(10) unsigned", "idrack": "int(10) unsigned", "created": "timestamp" };
+        return levelBase;
+    }(latte.DataRecord));
+    latte.levelBase = levelBase;
     var rackBase = /** @class */ (function (_super) {
         __extends(rackBase, _super);
         function rackBase() {
@@ -1034,6 +1034,16 @@ var latte;
                     this._btnSuccess = new latte.Element(this.querySelector('[data-property=btnSuccess]'));
                 }
                 return this._btnSuccess;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(DialogElementBase.prototype, "closeButton", {
+            get: function () {
+                if (!this._closeButton) {
+                    this._closeButton = new latte.Element(this.querySelector('[data-property=closeButton]'));
+                }
+                return this._closeButton;
             },
             enumerable: true,
             configurable: true
@@ -1407,15 +1417,156 @@ var latte;
 var latte;
 (function (latte) {
     window['latte']['globalViewsBank'] = latte._merge(window['latte']['globalViewsBank'] || {}, {
-        "DialogElementBase": "<div class=\"dialog-layover\" data-class=\"DialogElementBase\">\n    <div class=\"dialog-element\" data-property=\"dialogElement\">\n        <div class=\"modal-content\">\n            <header class=\"modal-header\">\n                <h5 data-property=\"titleElement\">Editar objeto del Rack</h5>\n                <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n                    <span aria-hidden=\"true\">&#xD7;</span>\n                </button>\n            </header>\n\n            <main class=\"modal-body\" data-property=\"wrapElement\"></main>\n\n            <footer class=\"modal-footer\">\n                <button class=\"btn btn-secondary\" data-property=\"btnClose\">Descartar cambios</button>\n                <button class=\"btn btn-primary\" data-property=\"btnSuccess\">Guardar cambios</button>\n            </footer>\n        </div>\n    </div>\n</div>",
+        "DialogElementBase": "<div class=\"dialog-layover\" data-class=\"DialogElementBase\">\n    <div class=\"dialog-element\" data-property=\"dialogElement\">\n        <div class=\"modal-content\">\n            <header class=\"modal-header\">\n                <h5 data-property=\"titleElement\">Editar objeto del Rack</h5>\n                <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\" data-property=\"closeButton\">\n                    <span aria-hidden=\"true\">&#xD7;</span>\n                </button>\n            </header>\n\n            <main class=\"modal-body\" data-property=\"wrapElement\"></main>\n\n            <footer class=\"modal-footer\">\n                <button class=\"btn btn-secondary\" data-property=\"btnClose\">Descartar cambios</button>\n                <button class=\"btn btn-primary\" data-property=\"btnSuccess\">Guardar cambios</button>\n            </footer>\n        </div>\n    </div>\n</div>",
         "LoaderElementBase": "<div class=\"layover-loader\" data-class=\"LoaderElementBase\">\n    <img src=\"/design/imgs/loader.svg\" width=\"90px\" height=\"90px\">\n</div>",
         "MainViewBase": "<div class=\"main-view\" data-class=\"MainViewBase\">\n    <div class=\"container\">\n        <div class=\"wrapper\" data-property=\"wrapperElement\"></div>\n    </div>\n</div>",
-        "RegisterFormBase": "<div class=\"register-element\" data-class=\"RegisterFormBase\">\n    <header class=\"py-5 text-center\">\n        <div class=\"clearfix\">\n            <button class=\"btn btn-primary float-left\" data-property=\"btnBack\">Regresar</button>\n            <h5>Crear Rack</h5>\n        </div>\n        <hr>\n    </header>\n    <main>\n        <form class=\"register-form\">\n            <div class=\"row\">\n                <div class=\"col-md-6 mb-3\">\n                    <label for=\"iptLevel\">Niveles</label>\n                    <input type=\"text\" class=\"form-control\" id=\"iptLevel\" data-property=\"txtLevel\" placeholder=\"N&#xFA;mero de niveles\" value=\"4\" required>\n                    <div class=\"invalid-feedback\" data-property=\"txtLevelFeedback\">\n                        La cantidad de niveles son requeridos.\n                    </div>\n                </div>\n                <div class=\"col-md-6 mb-3\">\n                    <label for=\"iptLocation\">Ubicaciones</label>\n                    <input type=\"text\" class=\"form-control\" id=\"iptLocation\" data-property=\"txtLocation\" placeholder=\"N&#xFA;mero de ubicaciones\" value=\"15\" required>\n                    <div class=\"invalid-feedback\" data-property=\"txtLocationFeedback\">\n                        La cantidad de ubicaciones son requeridas\n                    </div>\n                </div>\n            </div>\n\n            <div class=\"row\">\n                <div class=\"col-md-6 mb-3\"></div>\n                <div class=\"col-md-3 mb-3\">\n                    <button class=\"btn btn-secondary btn-block\" data-property=\"btnReset\">Descartar cambios</button>\n                </div>\n                <div class=\"col-md-3 mb-3\">\n                    <button class=\"btn btn-primary btn-block\" data-property=\"btnRegister\">Generar rack</button>\n                </div>\n            </div>\n        </form> <!-- ./ RegisterFormBase -->\n    </main>\n</div>",
+        "RegisterFormBase": "<div class=\"register-element\" data-class=\"RegisterFormBase\">\n    <header class=\"py-5 text-center\">\n        <div class=\"clearfix\">\n            <button class=\"btn btn-primary float-left\" data-property=\"btnBack\">Regresar</button>\n            <h5>Crear Rack</h5>\n        </div>\n        <hr>\n    </header>\n    <main>\n        <form class=\"register-form\">\n            <div class=\"row\">\n                <div class=\"col-md-6 mb-3\">\n                    <label for=\"iptLevel\">Niveles</label>\n                    <input type=\"text\" class=\"form-control\" id=\"iptLevel\" data-property=\"txtLevel\" placeholder=\"N&#xFA;mero de niveles\" value=\"4\" required>\n                    <div class=\"invalid-feedback\" data-property=\"txtLevelFeedback\">\n                        El n&#xFA;mero de niveles es inv&#xE1;lido\n                    </div>\n                </div>\n                <div class=\"col-md-6 mb-3\">\n                    <label for=\"iptLocation\">Ubicaciones</label>\n                    <input type=\"text\" class=\"form-control\" id=\"iptLocation\" data-property=\"txtLocation\" placeholder=\"N&#xFA;mero de ubicaciones\" value=\"15\" required>\n                    <div class=\"invalid-feedback\" data-property=\"txtLocationFeedback\">\n                        El n&#xFA;mero de ubicaiones es inv&#xE1;lido\n                    </div>\n                </div>\n            </div>\n\n            <div class=\"row\">\n                <div class=\"col-md-6 mb-3\"></div>\n                <div class=\"col-md-3 mb-3\">\n                    <button class=\"btn btn-secondary btn-block\" data-property=\"btnReset\">Descartar cambios</button>\n                </div>\n                <div class=\"col-md-3 mb-3\">\n                    <button class=\"btn btn-primary btn-block\" data-property=\"btnRegister\">Generar rack</button>\n                </div>\n            </div>\n        </form> <!-- ./ RegisterFormBase -->\n    </main>\n</div>",
         "RackElementBase": "<div class=\"rack-element\" data-class=\"RackElementBase\">\n    <header class=\"py-5 text-center\">\n        <div class=\"clearfix\">\n            <button class=\"btn btn-primary float-left\" data-property=\"btnBack\">Regresar</button>\n            <h5>Administrar Rack: <span data-property=\"lblName\"></span></h5>\n        </div>\n        <hr>\n    </header>\n    <main class=\"main\">\n        <table class=\"table table-bordered\">\n            <thead data-property=\"tableHead\"></thead>\n            <tbody data-property=\"tableBody\"></tbody>\n        </table>\n    </main>\n</div>",
         "ProductElementBase": "<div class=\"product-element\" data-class=\"ProductElementBase\">\n    <div class=\"img\" data-property=\"image\">\n        <img src=\"/design/imgs/product.jpg\" alt=\"Producto\" class=\"img-fluid\">\n    </div>\n    <div class=\"quantity\" data-property=\"quantityElement\">80</div>\n</div>",
-        "LocationEditElementBase": "<div class=\"location-element\" data-class=\"LocationEditElementBase\">\n    <form class=\"register-form\" data-property=\"form\" autocomplete=\"off\">\n        <div class=\"row\">\n            <div class=\"col-md-12 mb-3\">\n                <label for=\"iptQuantity\">Niveles</label>\n                <input type=\"text\" class=\"form-control\" id=\"iptQuantity\" data-property=\"txtQuantity\" placeholder=\"N&#xFA;mero de niveles\" value=\"0\" required autofocus>\n                <div class=\"invalid-feedback\">\n                    Niveles son requeridos.\n                </div>\n            </div>\n        </div>\n    </form>\n</div>",
+        "LocationEditElementBase": "<div class=\"location-element\" data-class=\"LocationEditElementBase\">\n    <form class=\"register-form\" data-property=\"form\" autocomplete=\"off\">\n        <div class=\"row\">\n            <div class=\"col-md-12 mb-3\">\n                <label for=\"iptQuantity\">Cantidad</label>\n                <input type=\"text\" class=\"form-control\" id=\"iptQuantity\" data-property=\"txtQuantity\" placeholder=\"N&#xFA;mero de niveles\" value=\"0\" required autofocus>\n                <div class=\"invalid-feedback\">\n                    Niveles son requeridos.\n                </div>\n            </div>\n        </div>\n    </form>\n</div>",
         "RacksViewBase": "<div class=\"main-view\" data-class=\"RacksViewBase\">\n    <div class=\"container\">\n        <header class=\"py-5 mb-3\">\n            <div class=\"clearfix\">\n                <h5>Administraci&#xF3;n de Racks</h5>\n                <p class=\"text-sm-left\">M&#xF3;dulo para Consultar, crear, actualizar y eliminar racks del sistema</p>\n                <button class=\"btn btn-primary btn-sm float-right\" data-property=\"btnCreateNew\">Crear nuevo Rack</button>\n            </div>\n            <hr>\n        </header>\n\n        <main class=\"main\">\n            <table class=\"table table-bordered\">\n                <thead>\n                <tr class=\"\">\n                    <th>Nombre</th>\n                    <th width=\"160\">Opciones</th>\n                </tr>\n                </thead>\n                <tbody data-property=\"bodyElement\">\n                    <tr>\n                        <td colspan=\"2\">\n                            <p class=\"m-3 text-center\">No hay elementos que mostrar</p>\n                        </td>\n                    </tr>\n                </tbody>\n            </table>\n        </main>\n\n        <footer class=\"clearfix\">\n            <div class=\"float-left\" data-property=\"rowsElement\">2</div>\n            <a class=\"float-right\" href=\"javascript:void(0)\" data-property=\"btnRefresh\">Actualizar</a>\n        </footer>\n    </div>\n</div>"
     });
+})(latte || (latte = {}));
+var latte;
+(function (latte) {
+    /**
+     * Main Class
+     * Your app starts here.
+     */
+    var Main = /** @class */ (function () {
+        /**
+         * Start your program on the constructor.
+         */
+        function Main() {
+            // Show main view
+            this.goMainView();
+        }
+        Main.prototype.goMainView = function () {
+            var view = new latte.MainView();
+            var mountPoint = document.querySelector('#root');
+            mountPoint.appendChild(view.element);
+            Main.mainView = view;
+        };
+        return Main;
+    }());
+    latte.Main = Main;
+})(latte || (latte = {}));
+var latte;
+(function (latte) {
+    /**
+     * MainView
+     */
+    var MainView = /** @class */ (function (_super) {
+        __extends(MainView, _super);
+        //region Static
+        //endregion
+        //region Fields
+        //endregion
+        /**
+         * Creates a new DashboardView
+         */
+        function MainView() {
+            var _this = _super.call(this) || this;
+            // Initialize the View
+            _this.present(_this.racksView);
+            return _this;
+        }
+        //endregion
+        //region Methods
+        /**
+         * Establece la vista principal de la aplicación.
+         *
+         * @param {latte.Element<HTMLElement>} el
+         */
+        MainView.prototype.present = function (el) {
+            if (el instanceof latte.RacksView) {
+                el.loadRacks().send();
+            }
+            this.wrapperElement.setContent(el);
+        };
+        Object.defineProperty(MainView.prototype, "registerForm", {
+            /**
+             * Gets the register form instance
+             *
+             * @returns {RegisterForm}
+             */
+            get: function () {
+                var _this = this;
+                if (!this._registerForm) {
+                    var lazy = this._registerForm = new latte.RegisterForm();
+                    lazy.registered.add(function (rack) {
+                        if (rack instanceof latte.Rack) {
+                            var rackElement = new latte.RackElement();
+                            rackElement.rack = rack;
+                            rackElement.closeRequest.add(function () {
+                                _this.present(_this.racksView);
+                            });
+                            _this.present(rackElement);
+                        }
+                    });
+                    lazy.closeRequest.add(function () {
+                        _this.present(_this.racksView);
+                    });
+                }
+                return this._registerForm;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(MainView.prototype, "racksView", {
+            /**
+             * Gets el componente para mostrar los racks de la vista principal
+             *
+             * @returns {RacksView}
+             */
+            get: function () {
+                var _this = this;
+                if (!this._racksView) {
+                    var lazy = this._racksView = new latte.RacksView();
+                    lazy.create.add(function () {
+                        _this.present(_this.registerForm);
+                    });
+                    lazy.edit.add(function (rack) {
+                        // Obtenemos el rack del servidor por nombre
+                        latte.Rack.byName(rack.name).send(function (record) {
+                            var rackElement = new latte.RackElement();
+                            rackElement.rack = record;
+                            rackElement.closeRequest.add(function () {
+                                _this.present(_this.racksView);
+                            });
+                            _this.present(rackElement);
+                        });
+                    });
+                }
+                return this._racksView;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        return MainView;
+    }(latte.MainViewBase));
+    latte.MainView = MainView;
+})(latte || (latte = {}));
+var latte;
+(function (latte) {
+    /**
+     * LoaderElement
+     */
+    var LoaderElement = /** @class */ (function (_super) {
+        __extends(LoaderElement, _super);
+        //region Static
+        //endregion
+        //region Fields
+        //endregion
+        /**
+         * LoaderElement
+         */
+        function LoaderElement() {
+            return _super.call(this) || this;
+        }
+        return LoaderElement;
+    }(latte.LoaderElementBase));
+    latte.LoaderElement = LoaderElement;
 })(latte || (latte = {}));
 var latte;
 (function (latte) {
@@ -1452,6 +1603,9 @@ var latte;
             if (element) {
                 _this.content = element;
             }
+            _this.closeButton.addEventListener('click', function () {
+                _this.close();
+            }, false);
             return _this;
         }
         /**
@@ -1486,6 +1640,9 @@ var latte;
         //region Private Methods
         //endregion
         //region Methods
+        /**
+         * Close view
+         */
         DialogElement.prototype.close = function () {
             this.removeFromParent();
         };
@@ -1621,51 +1778,6 @@ var latte;
         return DialogElement;
     }(latte.DialogElementBase));
     latte.DialogElement = DialogElement;
-})(latte || (latte = {}));
-var latte;
-(function (latte) {
-    /**
-     * LoaderElement
-     */
-    var LoaderElement = /** @class */ (function (_super) {
-        __extends(LoaderElement, _super);
-        //region Static
-        //endregion
-        //region Fields
-        //endregion
-        /**
-         * LoaderElement
-         */
-        function LoaderElement() {
-            return _super.call(this) || this;
-        }
-        return LoaderElement;
-    }(latte.LoaderElementBase));
-    latte.LoaderElement = LoaderElement;
-})(latte || (latte = {}));
-var latte;
-(function (latte) {
-    /**
-     * Main Class
-     * Your app starts here.
-     */
-    var Main = /** @class */ (function () {
-        /**
-         * Start your program on the constructor.
-         */
-        function Main() {
-            // Show main view
-            this.goMainView();
-        }
-        Main.prototype.goMainView = function () {
-            var view = new latte.MainView();
-            var mountPoint = document.querySelector('#root');
-            mountPoint.appendChild(view.element);
-            Main.mainView = view;
-        };
-        return Main;
-    }());
-    latte.Main = Main;
 })(latte || (latte = {}));
 var latte;
 (function (latte) {
@@ -1872,6 +1984,189 @@ var latte;
 var latte;
 (function (latte) {
     /**
+     * RackElement
+     */
+    var RackElement = /** @class */ (function (_super) {
+        __extends(RackElement, _super);
+        //region Static
+        //endregion
+        //region Fields
+        //endregion
+        /**
+         * Creates a new RackElement
+         */
+        function RackElement() {
+            var _this = _super.call(this) || this;
+            //endregion
+            //region Properties
+            /**
+             * Property field
+             */
+            _this._rack = null;
+            // Bind events
+            _this.btnBack.addEventListener('click', function () { _this.onCloseRequest(); }, false);
+            return _this;
+        }
+        //region Private Methods
+        /**
+         * @param {string} text
+         * @param {string} type
+         * @return {latte.Element<HTMLTableCellElement>}
+         */
+        RackElement.prototype.createColumn = function (text, type, className) {
+            if (type === void 0) { type = 'th'; }
+            if (className === void 0) { className = ''; }
+            var column = new latte.Element(document.createElement(type));
+            column.addClass('col-element');
+            column.addClass(className);
+            column.text = text;
+            return column;
+        };
+        /**
+         * @return {latte.Element<HTMLTableRowElement>}
+         */
+        RackElement.prototype.createRow = function () {
+            var row = new latte.Element(document.createElement('tr'));
+            row.addClass('row-element');
+            return row;
+        };
+        //endregion
+        //region Methods
+        /**
+         * Raises the <c>closeRequest</c> event
+         */
+        RackElement.prototype.onCloseRequest = function () {
+            if (this._closeRequest) {
+                this._closeRequest.raise();
+            }
+        };
+        /**
+         * Raises the <c>rack</c> event
+         */
+        RackElement.prototype.onRackChanged = function () {
+            var _this = this;
+            if (this._rackChanged) {
+                this._rackChanged.raise();
+            }
+            // TODO:
+            if (this.rack != null) {
+                this.lblName.text = this.rack.name;
+                // Debug: console.log(this.rack);
+                // Renderizar tabla
+                this.tableHead.clear();
+                this.tableBody.clear();
+                // Extraer primer nivel y primera ubicación para calcular el número de columnas
+                var firstLevel = (this.rack.levels.length > 0) ? this.rack.levels[0] : new latte.Level();
+                var heads_1 = [];
+                heads_1.push(this.createColumn('', 'th'));
+                firstLevel.locations.forEach(function (location, index) {
+                    heads_1.push(_this.createColumn(String.fromCharCode(65 + index), 'th'));
+                });
+                // Creamos los niveles y ubicaciones para el cuerpo de la tabla
+                var rows = this.rack.levels.map(function (level, index) {
+                    var row = _this.createRow();
+                    // Columna para el nombre del nivel
+                    row.add(_this.createColumn("N" + ++index, 'td'));
+                    // Creamos las columnas n+1 por cada renglón
+                    var columns = level.locations.map(function (location) {
+                        // Crear nuevo columna
+                        var locationWrap = _this.createColumn('', 'td', 'location');
+                        // Crear nuevo Producto
+                        var productElement = new latte.ProductElement();
+                        productElement.location = location;
+                        productElement.click.add(function () {
+                            var view = new latte.LocationEditElement();
+                            var dialog = new latte.DialogElement(view);
+                            view.location = location;
+                            view.txtQuantity.element.select();
+                            dialog.success.add(function () {
+                                // Validación de cantidad
+                                if (Number(view.txtQuantity.value) <= 0) {
+                                    return false;
+                                }
+                                location.quantity = Number(view.txtQuantity.value);
+                                location.save(function () {
+                                    productElement.quantityElement.text = latte.Culture.formatNumber(location.quantity, 2);
+                                    dialog.close();
+                                });
+                            });
+                            dialog.show();
+                        });
+                        locationWrap.tooltip = "Location ID : " + location.recordId;
+                        locationWrap.add(productElement);
+                        return locationWrap;
+                    });
+                    row.addArray(columns);
+                    return row;
+                });
+                this.tableHead.addArray(heads_1);
+                this.tableBody.addArray(rows.reverse());
+            }
+        };
+        Object.defineProperty(RackElement.prototype, "rackChanged", {
+            /**
+             * Gets an event raised when the value of the rack property changes
+             *
+             * @returns {LatteEvent}
+             */
+            get: function () {
+                if (!this._rackChanged) {
+                    this._rackChanged = new latte.LatteEvent(this);
+                }
+                return this._rackChanged;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(RackElement.prototype, "closeRequest", {
+            /**
+             * Gets an event raised when when the close button is pressed
+             *
+             * @returns {LatteEvent}
+             */
+            get: function () {
+                if (!this._closeRequest) {
+                    this._closeRequest = new latte.LatteEvent(this);
+                }
+                return this._closeRequest;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(RackElement.prototype, "rack", {
+            /**
+             * Gets or sets when the value of the rack property changes
+             *
+             * @returns {Rack}
+             */
+            get: function () {
+                return this._rack;
+            },
+            /**
+             * Gets or sets when the value of the rack property chnages
+             *
+             * @param {Rack} value
+             */
+            set: function (value) {
+                // Check if value changed
+                var changed = value !== this._rack;
+                // Set value
+                this._rack = value;
+                // Trigger changed event
+                if (changed) {
+                    this.onRackChanged();
+                }
+            },
+            enumerable: true,
+            configurable: true
+        });
+        return RackElement;
+    }(latte.RackElementBase));
+    latte.RackElement = RackElement;
+})(latte || (latte = {}));
+var latte;
+(function (latte) {
+    /**
      * RegisterForm
      */
     var RegisterForm = /** @class */ (function (_super) {
@@ -1987,331 +2282,6 @@ var latte;
         return RegisterForm;
     }(latte.RegisterFormBase));
     latte.RegisterForm = RegisterForm;
-})(latte || (latte = {}));
-var latte;
-(function (latte) {
-    /**
-     * RackElement
-     */
-    var RackElement = /** @class */ (function (_super) {
-        __extends(RackElement, _super);
-        //region Static
-        //endregion
-        //region Fields
-        //endregion
-        /**
-         * Creates a new RackElement
-         */
-        function RackElement() {
-            var _this = _super.call(this) || this;
-            //endregion
-            //region Properties
-            /**
-             * Property field
-             */
-            _this._rack = null;
-            // Bind events
-            _this.btnBack.addEventListener('click', function () { _this.onCloseRequest(); }, false);
-            return _this;
-        }
-        //region Private Methods
-        /**
-         * @param {string} text
-         * @param {string} type
-         * @return {latte.Element<HTMLTableCellElement>}
-         */
-        RackElement.prototype.createColumn = function (text, type, className) {
-            if (type === void 0) { type = 'th'; }
-            if (className === void 0) { className = ''; }
-            var column = new latte.Element(document.createElement(type));
-            column.addClass('col-element');
-            column.addClass(className);
-            column.text = text;
-            return column;
-        };
-        /**
-         * @return {latte.Element<HTMLTableRowElement>}
-         */
-        RackElement.prototype.createRow = function () {
-            var row = new latte.Element(document.createElement('tr'));
-            row.addClass('row-element');
-            return row;
-        };
-        //endregion
-        //region Methods
-        /**
-         * Raises the <c>closeRequest</c> event
-         */
-        RackElement.prototype.onCloseRequest = function () {
-            if (this._closeRequest) {
-                this._closeRequest.raise();
-            }
-        };
-        /**
-         * Raises the <c>rack</c> event
-         */
-        RackElement.prototype.onRackChanged = function () {
-            var _this = this;
-            if (this._rackChanged) {
-                this._rackChanged.raise();
-            }
-            // TODO:
-            if (this.rack != null) {
-                this.lblName.text = this.rack.name;
-                // Debug: console.log(this.rack);
-                // Renderizar tabla
-                this.tableHead.clear();
-                this.tableBody.clear();
-                // Extraer primer nivel y primera ubicación para calcular el número de columnas
-                var firstLevel = (this.rack.levels.length > 0) ? this.rack.levels[0] : new latte.Level();
-                var heads_1 = [];
-                heads_1.push(this.createColumn('', 'th'));
-                firstLevel.locations.forEach(function (location, index) {
-                    heads_1.push(_this.createColumn(String.fromCharCode(65 + index), 'th'));
-                });
-                // Creamos los niveles y ubicaciones para el cuerpo de la tabla
-                var rows = this.rack.levels.map(function (level, index) {
-                    var row = _this.createRow();
-                    // Columna para el nombre del nivel
-                    row.add(_this.createColumn("N" + ++index, 'td'));
-                    // Creamos las columnas n+1 por cada renglón
-                    var columns = level.locations.map(function (location) {
-                        // Crear nuevo columna
-                        var locationWrap = _this.createColumn('', 'td', 'location');
-                        // Crear nuevo Producto
-                        var productElement = new latte.ProductElement();
-                        productElement.location = location;
-                        productElement.click.add(function () {
-                            var view = new latte.LocationEditElement();
-                            var dialog = new latte.DialogElement(view);
-                            view.location = location;
-                            dialog.success.add(function () {
-                                location.quantity = Number(view.txtQuantity.value);
-                                location.save(function () {
-                                    productElement.quantityElement.text = latte.Culture.formatNumber(location.quantity, 2);
-                                    dialog.close();
-                                });
-                            });
-                            dialog.show();
-                        });
-                        locationWrap.tooltip = "Location ID : " + location.recordId;
-                        locationWrap.add(productElement);
-                        return locationWrap;
-                    });
-                    row.addArray(columns);
-                    return row;
-                });
-                this.tableHead.addArray(heads_1);
-                this.tableBody.addArray(rows.reverse());
-            }
-        };
-        Object.defineProperty(RackElement.prototype, "rackChanged", {
-            /**
-             * Gets an event raised when the value of the rack property changes
-             *
-             * @returns {LatteEvent}
-             */
-            get: function () {
-                if (!this._rackChanged) {
-                    this._rackChanged = new latte.LatteEvent(this);
-                }
-                return this._rackChanged;
-            },
-            enumerable: true,
-            configurable: true
-        });
-        Object.defineProperty(RackElement.prototype, "closeRequest", {
-            /**
-             * Gets an event raised when when the close button is pressed
-             *
-             * @returns {LatteEvent}
-             */
-            get: function () {
-                if (!this._closeRequest) {
-                    this._closeRequest = new latte.LatteEvent(this);
-                }
-                return this._closeRequest;
-            },
-            enumerable: true,
-            configurable: true
-        });
-        Object.defineProperty(RackElement.prototype, "rack", {
-            /**
-             * Gets or sets when the value of the rack property changes
-             *
-             * @returns {Rack}
-             */
-            get: function () {
-                return this._rack;
-            },
-            /**
-             * Gets or sets when the value of the rack property chnages
-             *
-             * @param {Rack} value
-             */
-            set: function (value) {
-                // Check if value changed
-                var changed = value !== this._rack;
-                // Set value
-                this._rack = value;
-                // Trigger changed event
-                if (changed) {
-                    this.onRackChanged();
-                }
-            },
-            enumerable: true,
-            configurable: true
-        });
-        return RackElement;
-    }(latte.RackElementBase));
-    latte.RackElement = RackElement;
-})(latte || (latte = {}));
-var latte;
-(function (latte) {
-    /**
-     * MainView
-     */
-    var MainView = /** @class */ (function (_super) {
-        __extends(MainView, _super);
-        //region Static
-        //endregion
-        //region Fields
-        //endregion
-        /**
-         * Creates a new DashboardView
-         */
-        function MainView() {
-            var _this = _super.call(this) || this;
-            // Initialize the View
-            _this.present(_this.racksView);
-            return _this;
-        }
-        //endregion
-        //region Methods
-        /**
-         * Establece la vista principal de la aplicación.
-         *
-         * @param {latte.Element<HTMLElement>} el
-         */
-        MainView.prototype.present = function (el) {
-            if (el instanceof latte.RacksView) {
-                el.loadRacks().send();
-            }
-            this.wrapperElement.setContent(el);
-        };
-        Object.defineProperty(MainView.prototype, "registerForm", {
-            /**
-             * Gets the register form instance
-             *
-             * @returns {RegisterForm}
-             */
-            get: function () {
-                var _this = this;
-                if (!this._registerForm) {
-                    var lazy = this._registerForm = new latte.RegisterForm();
-                    lazy.registered.add(function (rack) {
-                        if (rack instanceof latte.Rack) {
-                            var rackElement = new latte.RackElement();
-                            rackElement.rack = rack;
-                            rackElement.closeRequest.add(function () {
-                                _this.present(_this.racksView);
-                            });
-                            _this.present(rackElement);
-                        }
-                    });
-                    lazy.closeRequest.add(function () {
-                        _this.present(_this.racksView);
-                    });
-                }
-                return this._registerForm;
-            },
-            enumerable: true,
-            configurable: true
-        });
-        Object.defineProperty(MainView.prototype, "racksView", {
-            /**
-             * Gets el componente para mostrar los racks de la vista principal
-             *
-             * @returns {RacksView}
-             */
-            get: function () {
-                var _this = this;
-                if (!this._racksView) {
-                    var lazy = this._racksView = new latte.RacksView();
-                    lazy.create.add(function () {
-                        _this.present(_this.registerForm);
-                    });
-                    lazy.edit.add(function (rack) {
-                        // Obtenemos el rack del servidor por nombre
-                        latte.Rack.byName(rack.name).send(function (record) {
-                            var rackElement = new latte.RackElement();
-                            rackElement.rack = record;
-                            rackElement.closeRequest.add(function () {
-                                _this.present(_this.racksView);
-                            });
-                            _this.present(rackElement);
-                        });
-                    });
-                }
-                return this._racksView;
-            },
-            enumerable: true,
-            configurable: true
-        });
-        return MainView;
-    }(latte.MainViewBase));
-    latte.MainView = MainView;
-})(latte || (latte = {}));
-/**
- * Generated by xlatte
- */
-var latte;
-(function (latte) {
-    /**
-     * Record for table level
-     */
-    var Level = /** @class */ (function (_super) {
-        __extends(Level, _super);
-        function Level() {
-            return _super !== null && _super.apply(this, arguments) || this;
-        }
-        return Level;
-    }(latte.levelBase));
-    latte.Level = Level;
-})(latte || (latte = {}));
-/**
- * Generated by xlatte
- */
-var latte;
-(function (latte) {
-    /**
-     * Record for table product
-     */
-    var Product = /** @class */ (function (_super) {
-        __extends(Product, _super);
-        function Product() {
-            return _super !== null && _super.apply(this, arguments) || this;
-        }
-        return Product;
-    }(latte.productBase));
-    latte.Product = Product;
-})(latte || (latte = {}));
-/**
- * Generated by xlatte
- */
-var latte;
-(function (latte) {
-    /**
-     * Record for table location
-     */
-    var Location = /** @class */ (function (_super) {
-        __extends(Location, _super);
-        function Location() {
-            return _super !== null && _super.apply(this, arguments) || this;
-        }
-        return Location;
-    }(latte.locationBase));
-    latte.Location = Location;
 })(latte || (latte = {}));
 var latte;
 (function (latte) {
@@ -2506,6 +2476,57 @@ var latte;
 var latte;
 (function (latte) {
     /**
+     * Record for table level
+     */
+    var Level = /** @class */ (function (_super) {
+        __extends(Level, _super);
+        function Level() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        return Level;
+    }(latte.levelBase));
+    latte.Level = Level;
+})(latte || (latte = {}));
+/**
+ * Generated by xlatte
+ */
+var latte;
+(function (latte) {
+    /**
+     * Record for table location
+     */
+    var Location = /** @class */ (function (_super) {
+        __extends(Location, _super);
+        function Location() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        return Location;
+    }(latte.locationBase));
+    latte.Location = Location;
+})(latte || (latte = {}));
+/**
+ * Generated by xlatte
+ */
+var latte;
+(function (latte) {
+    /**
+     * Record for table product
+     */
+    var Product = /** @class */ (function (_super) {
+        __extends(Product, _super);
+        function Product() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        return Product;
+    }(latte.productBase));
+    latte.Product = Product;
+})(latte || (latte = {}));
+/**
+ * Generated by xlatte
+ */
+var latte;
+(function (latte) {
+    /**
      * Record for table rack
      */
     var Rack = /** @class */ (function (_super) {
@@ -2527,16 +2548,16 @@ var latte;
 /// <reference path="/Users/daniel/Projects/Racks/latte/app/support/ts-include/records.ts" />
 /// <reference path="/Users/daniel/Projects/Racks/latte/app/support/ts-include/views.ts" />
 /// <reference path="/Users/daniel/Projects/Racks/latte/app/support/ts-include/views_bank.ts" />
-/// <reference path="/Users/daniel/Projects/Racks/latte/app/ts/elements/DialogElement.ts" />
-/// <reference path="/Users/daniel/Projects/Racks/latte/app/ts/elements/LoaderElement.ts" />
 /// <reference path="/Users/daniel/Projects/Racks/latte/app/ts/Main.ts" />
+/// <reference path="/Users/daniel/Projects/Racks/latte/app/ts/MainView.ts" />
+/// <reference path="/Users/daniel/Projects/Racks/latte/app/ts/elements/LoaderElement.ts" />
+/// <reference path="/Users/daniel/Projects/Racks/latte/app/ts/elements/DialogElement.ts" />
 /// <reference path="/Users/daniel/Projects/Racks/latte/app/ts/elements/LocationEditElement.ts" />
 /// <reference path="/Users/daniel/Projects/Racks/latte/app/ts/elements/ProductElement.ts" />
-/// <reference path="/Users/daniel/Projects/Racks/latte/app/ts/elements/RegisterForm.ts" />
 /// <reference path="/Users/daniel/Projects/Racks/latte/app/ts/elements/RackElement.ts" />
-/// <reference path="/Users/daniel/Projects/Racks/latte/app/ts/MainView.ts" />
-/// <reference path="/Users/daniel/Projects/Racks/latte/app/ts/records/Level.ts" />
-/// <reference path="/Users/daniel/Projects/Racks/latte/app/ts/records/Product.ts" />
-/// <reference path="/Users/daniel/Projects/Racks/latte/app/ts/records/Location.ts" />
+/// <reference path="/Users/daniel/Projects/Racks/latte/app/ts/elements/RegisterForm.ts" />
 /// <reference path="/Users/daniel/Projects/Racks/latte/app/ts/racks/RacksView.ts" />
+/// <reference path="/Users/daniel/Projects/Racks/latte/app/ts/records/Level.ts" />
+/// <reference path="/Users/daniel/Projects/Racks/latte/app/ts/records/Location.ts" />
+/// <reference path="/Users/daniel/Projects/Racks/latte/app/ts/records/Product.ts" />
 /// <reference path="/Users/daniel/Projects/Racks/latte/app/ts/records/Rack.ts" /> 

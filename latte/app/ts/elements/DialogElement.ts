@@ -67,6 +67,9 @@ module latte {
                 this.content = element;
             }
 
+            this.closeButton.addEventListener('click', () => {
+                this.close();
+            }, false);
         }
 
         //region Private Methods
@@ -74,6 +77,9 @@ module latte {
 
         //region Methods
 
+        /**
+         * Close view
+         */
         close() {
             this.removeFromParent();
         }
@@ -172,7 +178,6 @@ module latte {
         //endregion
 
         //region Properties
-
         /**
          * Property field
          */

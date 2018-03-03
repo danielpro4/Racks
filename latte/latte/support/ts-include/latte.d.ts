@@ -17,17 +17,6 @@ declare module latte {
     /**
      *
      */
-    interface ICountry {
-        name: string;
-        phone: string;
-        code: string;
-        shortCode: string;
-    }
-}
-declare module latte {
-    /**
-     *
-     */
     interface ICall {
         marshall(): IDataRemoteCall;
         respond(responseData: IRemoteResponse): any;
@@ -35,6 +24,17 @@ declare module latte {
         withHandlers(success?: (data) => void, failure?: (errorDescription: string) => void): ICall;
         success: LatteEvent;
         failure: LatteEvent;
+    }
+}
+declare module latte {
+    /**
+     *
+     */
+    interface ICountry {
+        name: string;
+        phone: string;
+        code: string;
+        shortCode: string;
     }
 }
 declare module latte {
@@ -47,6 +47,27 @@ declare module latte {
         method: string;
         id: number;
         params: any;
+    }
+}
+/**
+ * Created by josemanuel on 8/9/16.
+ */
+declare module latte {
+    interface IEntityMeta {
+        /**
+         * Should give information about the fields of the entity
+         */
+        fields?: IInputList;
+        /**
+         * It's called when the form about the entity is created and fully loaded
+         * @param form
+         */
+        onFormCreated?(form: any): any;
+        /**
+         * It's called when the form about the entity is created
+         * @param form
+         */
+        onFormCreating?(form: any): any;
     }
 }
 /**
@@ -91,35 +112,6 @@ declare module latte {
     }
 }
 /**
- * Created by josemanuel on 8/9/16.
- */
-declare module latte {
-    interface IEntityMeta {
-        /**
-         * Should give information about the fields of the entity
-         */
-        fields?: IInputList;
-        /**
-         * It's called when the form about the entity is created and fully loaded
-         * @param form
-         */
-        onFormCreated?(form: any): any;
-        /**
-         * It's called when the form about the entity is created
-         * @param form
-         */
-        onFormCreating?(form: any): any;
-    }
-}
-declare module latte {
-    interface IRemoteResponse {
-        success: boolean;
-        data: any;
-        errorCode: number;
-        errorDescription: string;
-    }
-}
-/**
  * Created by josemanuel on 7/20/16.
  */
 declare module latte {
@@ -128,6 +120,14 @@ declare module latte {
      */
     interface IMessage {
         responseArrived: LatteEvent;
+    }
+}
+declare module latte {
+    interface IRemoteResponse {
+        success: boolean;
+        data: any;
+        errorCode: number;
+        errorDescription: string;
     }
 }
 /**

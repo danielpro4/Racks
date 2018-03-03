@@ -16,6 +16,14 @@ module latte{
 			return this._btnSuccess;
 		}
 
+		private _closeButton:Element<HTMLButtonElement>;
+		get closeButton():Element<HTMLButtonElement> {
+			if (!this._closeButton) {
+				this._closeButton = new Element<HTMLButtonElement>(this.querySelector('[data-property=closeButton]'));
+			}
+			return this._closeButton;
+		}
+
 		private _dialogElement:Element<HTMLDivElement>;
 		get dialogElement():Element<HTMLDivElement> {
 			if (!this._dialogElement) {

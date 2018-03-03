@@ -108,8 +108,15 @@ module latte {
                             const dialog = new DialogElement(view);
 
                             view.location = location;
+                            view.txtQuantity.element.select();
 
                             dialog.success.add(() => {
+
+                                // Validación de cantidad
+                                if (Number(view.txtQuantity.value) <= 0) {
+                                    return false;
+                                }
+
                                 location.quantity = Number(view.txtQuantity.value);
                                 location.save(() => {
                                     productElement.quantityElement.text = Culture.formatNumber(location.quantity,2);
