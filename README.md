@@ -9,7 +9,7 @@ Carpetas en latte/
 
  1. app: El código fuente del módulo(CRUD)
  2. app\php: es donde Vive el modelo, estos son clases PHP que mapean cada tabla de la base de datos,
-    es donde se hacen consultas o inserciones hacia la base datos, etc: digamos que es el ORM.
+    es donde se hacen consultas o inserciones a la base datos, etc: digamos que es el ORM.
     
  3. app\ts: Es donde vive la lógica de las vista.
     En este carpeta es donde vive la lógica que contrala toda las funcionalidades, el punto de entrada es la clase Main y
