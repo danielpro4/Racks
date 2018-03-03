@@ -5,6 +5,7 @@ Racks App
 
 ##Explicación de la estructura del proyecto
 
+
 Carpetas en latte/
 
  1. app: El código fuente del módulo(CRUD)
@@ -62,7 +63,3 @@ e.g. c:\Projects
 6. Reiniciar el servidor Apache
 
 7. Ejecutar en el navegador escribir en la barra de direcciones http://racks.local y listo
-
-
-
-Puebla 2018-03-03 10:31:0
