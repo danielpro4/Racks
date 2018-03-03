@@ -1,10 +1,7 @@
 Racks App
 =====
 
-#Ejemplo de desarollo de app.
-
-##Explicación de la estructura del proyecto
-
+## Explicación de la estructura del proyecto
 
 Carpetas en latte/
 
